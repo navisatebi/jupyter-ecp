@@ -1,5 +1,5 @@
 {
-    "applicationName": "CWL VM environment",
+    "applicationName": "ECP Jupyter",
     "contactEmail": "famaladoss@ebi.ac.uk",
     "about": "Cloud Portal Bioexcel application to create ubuntu based VM with tools such as cwltool, Toil, Docker",
     "version": "0.1",
@@ -10,19 +10,14 @@
         }
     ],
     "inputs": [
-        "nfs_server_host",
-        "remote_folder"
+        "disk_image_name"
     ],
     "deploymentParameters": [
-        "disk_image_name",
-        "remote_user",
-        "machine_type",
-        "local_folder",
         "floating_ip_pool",
         "network_name"
     ],
     "outputs": [
         "external_ip",
-		"ssh_user"
+	"ssh_user"
     ]
 }
