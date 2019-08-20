@@ -1,7 +1,7 @@
 {
     "applicationName": "ECP Jupyter",
-    "contactEmail": "famaladoss@ebi.ac.uk",
-    "about": "Cloud Portal Bioexcel application to create ubuntu based VM with tools such as cwltool, Toil, Docker",
+    "contactEmail": "navis@ebi.ac.uk",
+    "about": "ECP application for running bioexcel notebook in Jupyter ",
     "version": "0.1",
     "cloudProviders": [
         {
