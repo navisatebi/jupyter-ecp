@@ -1,0 +1,24 @@
+---
+- name: Warming up cwl instance
+  gather_facts: no
+  hosts: instance_public_ip
+
+  tasks:
+  - name: Initial connection block
+    block:
+      - name: Wait 1 minutes, but only start checking after 10 seconds
+        wait_for_connection:
+          delay: 10
+          timeout: 60
+    rescue:
+      - name: Try to install python 2, when ansible is not able to connect
+        raw: test -e /usr/bin/python || (apt -y update && apt install -y python)
+
+- name: Set up conda
+  hosts: instance_public_ip
+  roles:
+    - conda
+
+  tasks:
+    - name: Make sure the user key is authorized on the nfs-server instance
+      authorized_key: user="{{lookup('env','ANSIBLE_REMOTE_USER')}}" key="{{lookup('env','ssh_key')}}" exclusive=no state=present
