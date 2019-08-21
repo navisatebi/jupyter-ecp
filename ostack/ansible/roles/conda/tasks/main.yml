@@ -1,25 +1,11 @@
 - name: Install Conda
   block:
-    - name: Update and upgrade system
-      shell: |
-        sudo apt update --yes
-        sudo apt upgrade --yes
+    - name: Update system
+      shell:  sudo apt update --yes
+    - name: Upgrade system
+      shell:  sudo apt upgrade --yes  
     - name: Download Miniconda
       get_url:
-        url: https://repo.continuum.io/miniconda/Miniconda3-4.5.4-Linux-x86_64.sh
-        dest: ~/install-miniconda.sh
-    - name: Set umask
-      shell: umask 007
-    - name: Run the installer
-      shell: |
-         cd ~
-         sh install-miniconda.sh
-    - name: Set umask
-      shell: umask 077
-- name: Add conda channels
-  become: True
-  shell: |
-    conda config --add channels defaults
-    conda config --add channels bioconda 
-    conda config --add channels conda-forge
+        url: https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+        dest: ~/Miniconda3-latest-Linux-x86_64.sh
 
