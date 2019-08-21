@@ -41,6 +41,8 @@ external_ip=$(terraform output -state=${DPL}'terraform.tfstate' external_ip)
 
 # Set default value for Ansible variables if they are either empty or undefined
 
+cd ostack/ansible 
+
 export ANSIBLE_REMOTE_USER="${TF_VAR_remote_user:-ubuntu}"
 echo "export ANSIBLE_REMOTE_USER=${ANSIBLE_REMOTE_USER}"
 
