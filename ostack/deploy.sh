@@ -48,4 +48,4 @@ echo "export ANSIBLE_REMOTE_USER=${ANSIBLE_REMOTE_USER}"
 
 # Launch Ansible playbook
 echo -e "\n\t${CYAN}Launch Ansible playbook${NC}\n"
-ansible-playbook -b /ostack/ansible/playbook.yml
+ansible-playbook -b playbook.yml
