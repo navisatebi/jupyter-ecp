@@ -17,7 +17,7 @@
     - name: Install conda
       become: True
       shell: bash Miniconda3-latest-Linux-x86_64.sh
-   - name: Set umask
+    - name: Set umask
       become: True
       shell: umask 077
       
