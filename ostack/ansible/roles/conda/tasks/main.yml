@@ -10,14 +10,14 @@
       get_url:
         url: https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
         dest: /home/ubuntu/Miniconda3-latest-Linux-x86_64.sha
-        sync: 60
-        poll: 60
     - name: Set umask
       become: true
       shell: umask 007
     - name: Install conda
       become: true
       shell: bash /home/ubuntu/Miniconda3-latest-Linux-x86_64.sh
+      sync: 60
+      poll: 60
     - name: Set umask
       become: true
       shell: umask 077
