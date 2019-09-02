@@ -3,11 +3,7 @@
   gather_facts: no
   hosts: instance_public_ip
 
-tasks:
-  - name: Make sure the user key is authorized on the instance
-    authorized_key: user="{{lookup('env','ANSIBLE_REMOTE_USER')}}" key="{{lookup('env','ssh_key')}}" exclusive=no state=present
-
-tasks:
+  tasks:
   - name: Initial connection block
     block:
       - name: Wait 1 minutes, but only start checking after 10 seconds
@@ -23,3 +19,6 @@ tasks:
   roles:
     - conda
 
+  tasks:
+    - name: Make sure the user key is authorized on the nfs-server instance
+      authorized_key: user="{{lookup('env','ANSIBLE_REMOTE_USER')}}" key="{{lookup('env','ssh_key')}}" exclusive=no state=present
