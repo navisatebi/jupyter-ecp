@@ -20,5 +20,8 @@ resource "openstack_compute_instance_v2" "instance" {
 resource "openstack_compute_floatingip_associate_v2" "instance_public_ip" {
   floating_ip = "${openstack_networking_floatingip_v2.floatingip.address}"
   instance_id = "${openstack_compute_instance_v2.instance.id}"
-  instance_public_ip = "${openstack_networking_floatingip_v2.floatingip.address}"
+  connection {
+    host = "${openstack_networking_floatingip_v2.floatingip.address}"
+    user = "ubuntu"
+  }
 }
