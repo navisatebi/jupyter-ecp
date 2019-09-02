@@ -1,5 +1,5 @@
 ---
-- name: Warming up cwl instance
+- name: Warming up to be jupyter instance
   gather_facts: no
   hosts: instance_public_ip
 
