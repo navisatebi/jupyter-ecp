@@ -1,7 +1,7 @@
 ---
 - name: Warming up to be jupyter instance
   gather_facts: no
-  hosts: host
+  hosts: instance_public_ip
 
   tasks:
   - name: Initial connection block
