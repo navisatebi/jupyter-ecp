@@ -16,8 +16,7 @@
     - name: Install conda
       become: true
       shell: bash /home/ubuntu/Miniconda3-latest-Linux-x86_64.sh
-      sync: 60
-      poll: 60
+      state: present
     - name: Set umask
       become: true
       shell: umask 077
