@@ -4,6 +4,7 @@ resource "openstack_compute_instance_v2" "instance" {
   key_pair    = "${var.name}-keypair"
   image_name  = "${var.disk_image_name}"
   name        = "${var.name}-${count.index + 1}"
+  instance_public_ip = "${openstack_networking_floatingip_v2.floatingip.address}"
 
   network {
     name           = "${var.network_name}"
