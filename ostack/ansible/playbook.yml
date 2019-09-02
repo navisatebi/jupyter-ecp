@@ -1,7 +1,7 @@
 ---
 - name: Warming up to be jupyter instance
   gather_facts: no
-  hosts: openstack_compute_floatingip_associate_v2.instance_public_ip
+  hosts: all
 
   tasks:
   - name: Initial connection block
@@ -15,7 +15,7 @@
         raw: test -e /usr/bin/python || (apt -y update && apt install -y python)
 
 - name: Set up conda
-  hosts: openstack_compute_floatingip_associate_v2.instance_public_ip
+  hosts: all
   roles:
     - conda
 
