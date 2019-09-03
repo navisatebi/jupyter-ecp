@@ -27,6 +27,7 @@ export KEY_PATH="${DPL}${PORTAL_DEPLOYMENT_REFERENCE}.pub"
 echo "export KEY_PATH=${KEY_PATH}"
 
 export TF_VAR_key_path="${KEY_PATH}"
+chmod 700 ${KEY_PATH}
 echo "export TF_VAR_key_path=${TF_VAR_key_path}"
 
 export TF_STATE=${DPL}'terraform.tfstate'
