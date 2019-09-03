@@ -26,8 +26,7 @@ It uses the ubuntu 18.04 image from openstack and installs conda, jupyter using 
 
 | Parameter name          | Parameter value       |
 | ---                     | ---                   |
-| `disk_image_name`       | ``                    |
-| `remote_folder`         | `/var/nfs`            |
+| `disk_image_name`       | `ubuntu-18.04`        |
 
 ### Open Ports
 The virtual machine provided will have this ports open.
@@ -35,6 +34,3 @@ The virtual machine provided will have this ports open.
 `ICMP`: `all`  
 `TCP` : `22`
 
-### Ansible roles
-Ansible Galaxy: indigo-dc.nfs
-[https://galaxy.ansible.com/indigo-dc/nfs/](https://galaxy.ansible.com/indigo-dc/nfs/)
