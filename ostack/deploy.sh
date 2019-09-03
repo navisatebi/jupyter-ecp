@@ -32,9 +32,6 @@ echo "export TF_VAR_key_path=${TF_VAR_key_path}"
 export TF_STATE=${DPL}'terraform.tfstate'
 echo "export TF_STATE=${TF_STATE}"
 
-export ssh_key=${ssh_key}
-echo "export ssh_key=${ssh_key}"
-
 # Launch provisioning of the VM
 echo -e "\n\t${CYAN}Terraform apply${NC}\n"
 terraform apply --state=${DPL}'terraform.tfstate' ${APP}'/ostack/terraform'
