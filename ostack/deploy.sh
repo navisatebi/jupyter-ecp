@@ -49,6 +49,8 @@ cd ostack/ansible
 export ANSIBLE_REMOTE_USER="${TF_VAR_remote_user:-ubuntu}"
 echo "export ANSIBLE_REMOTE_USER=${ANSIBLE_REMOTE_USER}"
 
+export public_instace_ip = ${external_ip}
+
 # Launch Ansible playbook
 echo -e "\n\t${CYAN}Launch Ansible playbook${NC}\n"
 ansible-playbook -b playbook.yml
