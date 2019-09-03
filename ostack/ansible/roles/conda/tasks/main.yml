@@ -35,3 +35,8 @@
         path: /opt/miniconda3/bin
         mode: +x
         recurse: yes
+    - name: conda deactivate base environment   
+      become: True
+      shell: |
+        conda config --set auto_activate_base False
+        deactivate base env
