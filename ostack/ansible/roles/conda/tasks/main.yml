@@ -16,6 +16,9 @@
         recurse: yes
     - name: Run the installer
       shell: /tmp/install-miniconda.sh -b -u -p /opt/miniconda3
+    - name: Wait until the file /opt/miniconda3/bin is present before continuing
+      wait_for:
+      path: /opt/miniconda3/bin  
     - name: Remove the installer
       file:
         state: absent
