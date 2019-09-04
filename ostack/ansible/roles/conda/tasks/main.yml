@@ -14,7 +14,7 @@
         path: /home/ubuntu/miniconda3
         state: directory
     - name: Run the installer
-      shell: /tmp/Miniconda3-latest-Linux-x86_64.sh -b -u -p /home/ubuntu/miniconda3
+      shell: /home/ubuntu/Miniconda3-latest-Linux-x86_64.sh /home/ubuntu/miniconda3
     - name: Remove the installer  
       file:
         state: absent
