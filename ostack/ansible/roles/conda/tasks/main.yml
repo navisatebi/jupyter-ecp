@@ -7,7 +7,7 @@
         checksum: md5:1c945f2b3335c7b2b15130b1b2dc5cf4
     - name: Set umask
       become: true
-      shell: uask 007
+      shell: umask 007
     - name: Create conda folder
       become: True
       file:
@@ -15,6 +15,7 @@
         state: directory
     - name: Run the installer
       shell: /tmp/Miniconda3-latest-Linux-x86_64.sh -b -u -p /home/ubuntu
+    - name: Remove the installer  
       file:
         state: absent
         path: /tmp/Miniconda3-latest-Linux-x86_64.sh
