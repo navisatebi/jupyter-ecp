@@ -2,9 +2,9 @@
   block:
     - name: Download Miniconda
       get_url:
-        url: https://repo.continuum.io/miniconda/Miniconda3-4.5.4-Linux-x86_64.sh
-        dest: /tmp/install-miniconda.sh
-        checksum: md5:a946ea1d0c4a642ddf0c3a26a18bb16d
+        url: https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+        dest: /tmp/Miniconda3-latest-Linux-x86_64.sh
+        checksum: md5:1c945f2b3335c7b2b15130b1b2dc5cf4
         mode: 0550
     - name: Create conda folder
       become: True
@@ -22,7 +22,7 @@
         path: /tmp/install-miniconda.sh
     - name: Add miniconda bin to path
       become: True
-      shell: echo 'export PATH=/opt/miniconda3/bin:$PATH' >> /etc/profile
+      shell: echo 'export PATH=/opt/miniconda3/bin:$PATH' >> ~/.bashrc
     - name: conda - read permission for all
       become: True
       file:
@@ -37,6 +37,4 @@
         recurse: yes
     - name: conda deactivate base environment   
       become: True
-      shell: |
-        conda config --set auto_activate_base False
-        deactivate base env
+      shell: conda config --set auto_activate_base false 
