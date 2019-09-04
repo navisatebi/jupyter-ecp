@@ -1,3 +1,0 @@
- - reconnect_task:
-   notify:
-     - Kill own ssh connections
