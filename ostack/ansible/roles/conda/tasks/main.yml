@@ -3,7 +3,7 @@
     - name: Download Miniconda
       get_url:
         url: https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-        dest: /tmp/Miniconda3-latest-Linux-x86_64.sh
+        dest: /home/ubuntu/Miniconda3-latest-Linux-x86_64.sh
         checksum: md5:1c945f2b3335c7b2b15130b1b2dc5cf4
     - name: Set umask
       become: true
@@ -11,14 +11,14 @@
     - name: Create conda folder
       become: True
       file:
-        path: /home/ubuntu
+        path: /home/ubuntu/miniconda3
         state: directory
     - name: Run the installer
-      shell: /tmp/Miniconda3-latest-Linux-x86_64.sh -b -u -p /home/ubuntu
+      shell: /tmp/Miniconda3-latest-Linux-x86_64.sh -b -u -p /home/ubuntu/miniconda3
     - name: Remove the installer  
       file:
         state: absent
-        path: /tmp/Miniconda3-latest-Linux-x86_64.sh
+        path: /home/ubuntu/Miniconda3-latest-Linux-x86_64.sh
     - name: Add miniconda bin to path
       become: True
       shell: echo 'export PATH=/home/ubuntu/miniconda3/bin:$PATH' >> /etc/profile
