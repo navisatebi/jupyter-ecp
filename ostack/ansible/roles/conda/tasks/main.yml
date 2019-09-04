@@ -44,9 +44,9 @@
         path: /opt/miniconda3/bin
         mode: +x
         recurse: yes
-    - name: sleep for 300 seconds and continue with play
-      wait_for:
-         timeout: 300 
+   - name: reset ssh connection to allow user changes to affect 'current login user'
+     become: true
+     meta: reset_connection
     - name: conda set auto env 'base' to false
       become: true
       shell: conda config --set auto_activate_base False
