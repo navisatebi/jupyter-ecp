@@ -25,6 +25,7 @@
         path: /tmp/install-miniconda.sh
     - name: Add miniconda bin to path
       become: True
+      shell: export PATH=/opt/miniconda3/bin:$PATH
       shell: echo 'export PATH=/opt/miniconda3/bin:$PATH' >> /etc/profile
       shell: echo 'export PATH=/opt/miniconda3/bin:$PATH' >> ~/.bashrc
     - name: conda - read permission for all
