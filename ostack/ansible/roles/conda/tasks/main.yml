@@ -5,36 +5,25 @@
         url: https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
         dest: /tmp/Miniconda3-latest-Linux-x86_64.sh
         checksum: md5:1c945f2b3335c7b2b15130b1b2dc5cf4
-        mode: 0550
+    - name: Set umask
+      become: true
+      shell: uask 007
     - name: Create conda folder
       become: True
       file:
-        path: /opt/miniconda3
+        path: /home/ubuntu
         state: directory
-        owner: ubuntu
-        mode: 755
-        recurse: yes
     - name: Run the installer
-      shell: /tmp/Miniconda3-latest-Linux-x86_64.sh -b -u -p /opt/miniconda3
-    - name: Remove the installer
+      shell: /tmp/Miniconda3-latest-Linux-x86_64.sh -b -u -p /home/ubuntu
       file:
         state: absent
         path: /tmp/Miniconda3-latest-Linux-x86_64.sh
     - name: Add miniconda bin to path
       become: True
-      shell: echo 'export PATH=/opt/miniconda3/bin:$PATH' >> /etc/profile
-    - name: conda - read permission for all
+      shell: echo 'export PATH=/home/ubuntu/miniconda3/bin:$PATH' >> /etc/profile
+    - name: Set umask
       become: True
-      file:
-        path: /opt/miniconda3
-        mode: +r
-        recurse: yes
-    - name: conda - execution permission for all
-      become: True
-      file:
-        path: /opt/miniconda3/bin
-        mode: +x
-        recurse: yes
+      shell: umask 077
     - name: conda deactivate base environment   
       become: True
       shell: conda config --set auto_activate_base false 
