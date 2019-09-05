@@ -1,4 +1,6 @@
 ---
+dependencies:
+  - { role: udondan.ssh-reconnect, become: yes, tags: [ssh-reconnect] }
 - name: Warming up to be jupyter instance
   gather_facts: no
   hosts: instance_public_ip
