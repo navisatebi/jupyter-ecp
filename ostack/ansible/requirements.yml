@@ -1,1 +1,6 @@
-src: git+https://github.com/udondan/ansible-role-ssh-reconnect.git
+---
+- name: ssh-reconnect
+  scm: git
+   src: git+https://github.com/udondan/ansible-role-ssh-reconnect.git
+  version: master  
+ 
