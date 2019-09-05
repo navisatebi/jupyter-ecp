@@ -45,7 +45,7 @@
         mode: +x
         recurse: yes
     - name: Kill own ssh connections
-       notify:
+      notify:
         - Kill own ssh connections
     - name: conda set auto env 'base' to false
       become: true
