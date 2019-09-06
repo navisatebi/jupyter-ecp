@@ -1,3 +1,0 @@
----
-- name: Kill own ssh connections
-  ssh-reconnect: user=ubuntu
