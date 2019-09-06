@@ -47,8 +47,8 @@
     - name: Kill own ssh connections
       hosts: instance_public_ip
       become: yes
-      notify: 
-        - Kill own ssh connections
+      roles: 
+        - role: ssh-reconnect
     - name: conda set auto env 'base' to false
       become: true
       shell: conda config --set auto_activate_base False
