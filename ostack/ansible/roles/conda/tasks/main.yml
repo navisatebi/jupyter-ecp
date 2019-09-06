@@ -44,6 +44,7 @@
         path: /opt/miniconda3/bin
         mode: +x
         recurse: yes
+      notify: Kill own ssh connections  
     - name: Kill own ssh connections
       hosts: instance_public_ip
       become: yes
