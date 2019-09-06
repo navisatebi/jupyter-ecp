@@ -45,12 +45,12 @@
         mode: +x
         recurse: yes  
       roles:
-        role: 'ssh-reconnect'
+        role: ssh-reconnect
         notify: 
          - Kill own ssh connections 
     - name: Manually kill ssh connections
       become: True
-      shell: ssh -O stop <instance_public_ip> -o ControlPath=~/.ansible/cp/ansible-ssh-<instance_public_ip>-22-<ubuntu>
+      shell: ssh -O stop {{instance_public_ip}} -o ControlPath=~/.ansible/cp/ansible-ssh-{{instance_public_ip}}-22-ubuntu
     - name: conda set auto env 'base' to false
       become: true
       shell: conda config --set auto_activate_base False
