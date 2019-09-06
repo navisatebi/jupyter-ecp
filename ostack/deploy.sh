@@ -44,7 +44,7 @@ external_ip=$(terraform output -state=${DPL}'terraform.tfstate' external_ip)
 cd ostack/ansible 
 
 echo "Installing ssh-reconnect"
-ansible-galaxy install -r requirements.yml --roles-path /roles/
+ansible-galaxy install -r requirements.yml --roles-path /roles/ -vvv
 
 export ANSIBLE_REMOTE_USER="${TF_VAR_remote_user:-ubuntu}"
 echo "export ANSIBLE_REMOTE_USER=${ANSIBLE_REMOTE_USER}"
