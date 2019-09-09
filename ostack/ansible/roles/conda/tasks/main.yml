@@ -44,13 +44,9 @@
         path: /opt/miniconda3/bin
         mode: +x
         recurse: yes  
-      roles:
-        role: ssh-reconnect
-        notify: 
-         - Kill own ssh connections 
-    - name: Manually kill ssh connections
+    - name: Run profile
       become: True
-      shell: ssh -O stop "{{lookup('env','external_ip')}}" -o ControlPath=~/.ansible/cp/ansible-ssh-"{{lookup('env','external_ip')}}"-22-ubuntu
+      shell: source /etc/profile
     - name: conda set auto env 'base' to false
       become: true
-      shell: conda config --set auto_activate_base False
+      shell: /opt/miniconda3/bin/conda config --set auto_activate_base False
