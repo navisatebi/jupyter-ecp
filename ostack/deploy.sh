@@ -38,6 +38,7 @@ terraform apply --state=${DPL}'terraform.tfstate' ${APP}'/ostack/terraform'
 
 # Extract the external IP of the instance
 external_ip=$(terraform output -state=${DPL}'terraform.tfstate' external_ip)
+export external_ip=${external_ip}
 echo "export external_ip=${external_ip}"
 
 # Set default value for Ansible variables if they are either empty or undefined
