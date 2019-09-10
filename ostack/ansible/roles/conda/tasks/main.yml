@@ -64,9 +64,9 @@
     - name: conda activate biobb env and install dependencies
       become: true
       shell: >
-      conda activate biobb; conda install biobb_common==0.1.4; conda install biobb_io==0.1.4; 
-      conda install biobb_model==0.1.8; conda install biobb_md==0.1.5; conda install nglview; 
-      conda install simpletraj; conda install pocl; 
-      ln -s /etc/OpenCL/vendors /home/ubuntu/miniconda3/envs/biobb/etc/OpenCL/vendors
+       conda activate biobb; conda install biobb_common==0.1.4; conda install biobb_io==0.1.4; 
+       conda install biobb_model==0.1.8; conda install biobb_md==0.1.5; conda install nglview; 
+       conda install simpletraj; conda install pocl; 
+       ln -s /etc/OpenCL/vendors /home/ubuntu/miniconda3/envs/biobb/etc/OpenCL/vendors
       
       
