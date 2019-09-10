@@ -57,5 +57,8 @@
       shell: conda config --add channels defaults; conda config --add channels bioconda;conda config --add channels conda-forge
     - name: Conda install python
       become: true
-      shell: conda install python=3.6 && sudo apt-get install python-pip
+      shell: conda install python=3.6 && sudo apt-get install python-pip 
+    - name: conda create new environment
+      become: true
+      shell: conda create -n biobb
       
