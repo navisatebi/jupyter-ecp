@@ -49,10 +49,12 @@
       shell: source /etc/profile
       args:
           executable: /bin/bash 
+    - name: Create symbolic link
+      become: true
+      shell: ln -s  /opt/miniconda3/bin/conda /usr/bin/conda
     - name: Conda add channels
       become: true
-      shell: |
-      ln -s  /opt/miniconda3/bin/conda /usr/bin/conda && 
+      shell: 
       conda config --add channels defaults && 
       conda config --add channels bioconda &&
       conda config --add channels conda-forge
