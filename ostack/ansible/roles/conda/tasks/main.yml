@@ -25,7 +25,7 @@
         path: /tmp/install-miniconda.sh
     - name: Add miniconda bin to path 1
       become: True
-      shell: export PATH=/opt/miniconda3/bin:$PATH 
+      shell: "export PATH=/opt/miniconda3/bin:$PATH; conda init"
     - name: Add miniconda bin to path 2
       become: True
       shell: echo 'export PATH=/opt/miniconda3/bin:$PATH' >> ~/.bashrc
