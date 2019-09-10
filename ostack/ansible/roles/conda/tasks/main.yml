@@ -25,7 +25,7 @@
         path: /tmp/install-miniconda.sh
     - name: Add miniconda bin to path 1
       become: True
-      shell: "export PATH=/opt/miniconda3/bin:$PATH; conda init"
+      shell: "export PATH=/opt/miniconda3/bin:$PATH"
     - name: Add miniconda bin to path 2
       become: True
       shell: echo 'export PATH=/opt/miniconda3/bin:$PATH' >> ~/.bashrc
@@ -49,6 +49,14 @@
       shell: source /etc/profile
       args:
           executable: /bin/bash 
-    - name: Set auto env 'base' to false
+    - name: Conda add channels
       become: true
-      shell: /opt/miniconda3/bin/conda config --set auto_activate_base False
+      shell: |
+      ln -s  /opt/miniconda3/bin/conda /usr/bin/conda
+      conda config --add channels defaults
+      conda config --add channels bioconda
+      conda config --add channels conda-forge
+    - name: Conda install python
+      become: true
+      shell: conda install python=3.6
+      
