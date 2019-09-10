@@ -49,3 +49,6 @@
       shell: source /etc/profile
       args:
           executable: /bin/bash 
+    - name: Set auto env 'base' to false
+      become: true
+      shell: /opt/miniconda3/bin/conda config --set auto_activate_base False
