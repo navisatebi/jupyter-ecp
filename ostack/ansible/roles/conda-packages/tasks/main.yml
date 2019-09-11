@@ -1,5 +1,5 @@
 ---
-- name: Test evandam.conda
+- name: Install packages using evandam.conda
   hosts: all
   roles:
     - role: evandam.conda
@@ -13,7 +13,14 @@
     - name: Install some packages in the environment
       conda:
         name:
-          - 
-          - 
-          - 
+          - biobb_common==0.1.4
+          - biobb_io==0.1.4biobb_model==0.1.8
+          - biobb_model==0.1.8
+          - biobb_md==0.1.5
+          - nglview
+          - simpletraj
+          - pocl
         environment: biobb
+   - name: Create link to OpenCL vendor
+     become: true
+     shell: ln -s /etc/OpenCL/vendors /home/ubuntu/miniconda3/envs/biobb/etc/OpenCL/vendors
