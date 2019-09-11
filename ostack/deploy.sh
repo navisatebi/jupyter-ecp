@@ -45,7 +45,7 @@ echo "export external_ip=${external_ip}"
 
 cd ostack/ansible 
 
-echo "Installing ssh-reconnect"
+echo "Installing ssh-reconnect, evandam.conda"
 ansible-galaxy install -r requirements.yml --roles-path /roles/ -vvv
 
 export ANSIBLE_REMOTE_USER="${TF_VAR_remote_user:-ubuntu}"
