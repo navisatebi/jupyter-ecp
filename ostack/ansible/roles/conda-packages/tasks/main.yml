@@ -4,11 +4,6 @@
   roles:
     - role: evandam.conda
   tasks:
-    - name: Update conda
-      conda:
-        name: conda
-        state: latest
-        executable: usr/bin/conda
     - name: Create a conda environment
       conda:
         name: python
