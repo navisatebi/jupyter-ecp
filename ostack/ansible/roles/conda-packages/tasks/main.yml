@@ -21,6 +21,3 @@
           - simpletraj
           - pocl
         environment: biobb
-   - name: Create link to OpenCL vendor
-     become: true
-     shell: ln -s /etc/OpenCL/vendors /home/ubuntu/miniconda3/envs/biobb/etc/OpenCL/vendors
