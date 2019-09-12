@@ -1,5 +1,5 @@
 - name: Install packages using evandam.conda
-  tasks:
+  block:
     - name: Create a conda environment
       conda:
         name: python
