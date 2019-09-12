@@ -1,4 +1,6 @@
 - name: Install packages using evandam.conda
+  roles:
+   - role: evandam.conda
   block:
     - name: Create a conda environment
       conda:
