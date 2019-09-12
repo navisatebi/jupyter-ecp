@@ -1,6 +1,4 @@
 - name: Install packages using evandam.conda
-  roles:
-    - role: evandam.conda
   tasks:
     - name: Create a conda environment
       conda:
