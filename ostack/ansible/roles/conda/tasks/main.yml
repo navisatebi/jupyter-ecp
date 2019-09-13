@@ -1,5 +1,5 @@
 - include_role:
-    name: evandam.conda
+    name: /ostack/ansible/roles/conda/evandam.conda
 - name: Install Conda
   block:
     - name: Download Miniconda
