@@ -20,6 +20,7 @@
   roles:
     - conda
     - evandam.conda
+    - conda-packages
 
   tasks:
     - name: Create a conda environment
