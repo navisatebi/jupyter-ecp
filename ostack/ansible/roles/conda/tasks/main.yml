@@ -1,3 +1,5 @@
+- include_role:
+    name: evandam.conda
 - name: Install Conda
   block:
     - name: Download Miniconda
