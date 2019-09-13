@@ -1,1 +1,5 @@
-
+---
+- name: evandam.conda
+  scm: git
+  src: git+https://github.com/evandam/evandam.conda.git
+  version: master  

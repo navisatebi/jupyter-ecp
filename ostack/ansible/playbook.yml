@@ -23,11 +23,5 @@
     - conda-packages
 
   tasks:
-    - name: Create a conda environment
-      conda:
-        name: python
-        version: 3.6
-        environment: biobb
-        state: present
     - name: Make sure the user key is authorized on the nfs-server instance
       authorized_key: user="{{lookup('env','ANSIBLE_REMOTE_USER')}}" key="{{lookup('env','ssh_key')}}" exclusive=no state=present
