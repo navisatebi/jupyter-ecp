@@ -1,4 +1,0 @@
-tox
-molecule
-docker
-pylint
