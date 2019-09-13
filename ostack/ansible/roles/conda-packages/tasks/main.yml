@@ -1,6 +1,5 @@
 ---
 - name: Test evandam.conda
-  hosts: instance_public_ip
   roles:
     - role: evandam.conda
   tasks:
