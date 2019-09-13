@@ -44,10 +44,6 @@ echo "export external_ip=${external_ip}"
 # Set default value for Ansible variables if they are either empty or undefined
 
 cd ostack/ansible 
-
-echo "Installing ssh-reconnect, evandam.conda"
-ansible-galaxy install -r requirements.yml --roles-path /roles/ -vvv
-
 export ANSIBLE_REMOTE_USER="${TF_VAR_remote_user:-ubuntu}"
 echo "export ANSIBLE_REMOTE_USER=${ANSIBLE_REMOTE_USER}"
 
