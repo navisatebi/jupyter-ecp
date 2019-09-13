@@ -7,7 +7,7 @@
       conda:
         name: conda
         state: latest
-        executable: /opt/conda/bin/conda
+        executable: /usr/bin/conda
     - name: Create a conda environment
       conda:
         name: python
