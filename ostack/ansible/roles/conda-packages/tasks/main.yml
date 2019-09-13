@@ -1,1 +1,6 @@
 ---
+- name: Update conda
+  conda:
+     name: conda
+     state: latest
+     executable: /opt/conda/bin/conda
