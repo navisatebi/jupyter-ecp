@@ -60,16 +60,3 @@
     - name: Conda install python
       become: true
       shell: conda update conda; conda install python=3.6 && sudo apt-get install python-pip 
-    - name: Create a conda environment
-      conda:
-        name: python
-        version: 3.7
-        environment: python3
-        state: present
-    - name: Install some packages in the environment
-      conda:
-        name:
-          - pandas
-          - numpy
-          - tensorflow
-        environment: python3  
