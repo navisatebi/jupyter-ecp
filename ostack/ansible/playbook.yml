@@ -3,6 +3,8 @@
   gather_facts: no
   hosts: instance_public_ip
   tasks:
+  - include_role:
+      name: 'evandam.conda'
   - name: Initial connection block
     block:
       - name: Wait 1 minutes, but only start checking after 10 seconds
@@ -17,7 +19,6 @@
   hosts: instance_public_ip
   roles:
     - conda
-    - conda-packages
 
   tasks:
     - name: Make sure the user key is authorized on the nfs-server instance
