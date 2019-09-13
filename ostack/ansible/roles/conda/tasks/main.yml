@@ -52,9 +52,9 @@
     - name: Create symbolic link
       become: true
       shell: ln -s  /opt/miniconda3/bin/conda /usr/bin/conda
-    - name: Conda add channels
-      become: true
-      shell: conda config --add channels defaults; conda config --add channels bioconda;conda config --add channels conda-forge
-    - name: Conda install python
-      become: true
-      shell: conda update conda; conda install python=3.6 && sudo apt-get install python-pip 
+   # - name: Conda add channels
+   #   become: true
+   #   shell: conda config --add channels defaults; conda config --add channels bioconda;conda config --add channels conda-forge
+   # - name: Conda install python
+   #   become: true
+    #  shell: conda update conda; conda install python=3.6 && sudo apt-get install python-pip 
