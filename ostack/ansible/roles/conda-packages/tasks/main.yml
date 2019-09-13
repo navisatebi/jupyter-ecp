@@ -1,6 +1,6 @@
 ---
 - include_role:
-  name: evandam.conda
+   name: evandam.conda
 - name: Update conda
   conda:
      name: conda
