@@ -17,6 +17,7 @@
   hosts: instance_public_ip
   roles:
     - conda
+    - conda-packages
 
   tasks:
     - name: Make sure the user key is authorized on the nfs-server instance
