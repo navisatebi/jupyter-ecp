@@ -19,6 +19,7 @@
 
 - name: Set up conda
   hosts: instance_public_ip
+  gather_facts: yes
   roles:
     - conda
     - evandam.conda
