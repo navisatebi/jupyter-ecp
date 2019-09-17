@@ -5,6 +5,8 @@
   tasks:
   - include_role:
       name: 'evandam.conda'
+  - include_role:
+      name: 'ansible-python3-role'
   - name: Initial connection block
     block:
       - name: Wait 1 minutes, but only start checking after 10 seconds
@@ -20,6 +22,8 @@
   roles:
     - conda
     - evandam.conda
+    - name: python3
+      python3_command: "3.6.4"
     - conda-packages
 
   tasks:
