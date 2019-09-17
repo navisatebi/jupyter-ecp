@@ -1,11 +1,6 @@
 ---
 - name: Warming up to be jupyter instance
-  gather_facts: no
-  tasks:
-   - setup:
-        filter: ansible_env
-   - debug:
-        var=ansible_env
+  gather_facts: yes
   hosts: instance_public_ip
   tasks:
   - include_role:
