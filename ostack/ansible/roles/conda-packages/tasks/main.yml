@@ -8,7 +8,7 @@
 - name: Create a conda environment
   conda:
     name: python
-    version: 3.6
+    version: 3.7
     environment: biobb
     state: present 
 
