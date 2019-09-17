@@ -4,17 +4,11 @@
     name: conda
     state: latest
     executable: /usr/bin/conda
-
-- name: Install python
-  conda:
-    name: 
-        - python=3.6
-        - python3-pip
     
 - name: Create a conda environment
   conda:
     name: python
-    version: 3.6
+    version: 3.7
     environment: biobb
     state: present 
 
