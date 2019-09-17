@@ -6,11 +6,8 @@
     executable: /usr/bin/conda
     
 - name: Create a conda environment
-  conda:
-    name: python
-    version: 3.7
-    environment: biobb
-    state: present 
+  become: true
+  shell: conda create --name biobb
 
 - name: Install some packages in the environment
   conda:
