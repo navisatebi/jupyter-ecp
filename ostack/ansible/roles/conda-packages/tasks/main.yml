@@ -4,15 +4,11 @@
     name: conda
     state: latest
     executable: /usr/bin/conda
-
-- name: Install dependencies for conda
-  apt:
-    name: ['virtualenv', 'python-dev', 'python-setuptools', 'python3-pip', 'python3-venv']
-    state: present
     
 - name: Create a conda environment
   conda:
     name: python
+    version: 3.6.5
     environment: biobb
 
 - name: Install some packages in the environment
