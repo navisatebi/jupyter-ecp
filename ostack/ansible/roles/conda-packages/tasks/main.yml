@@ -13,7 +13,6 @@
 - name: Create a conda environment
   conda:
     name: python
-    version: 3.6
     environment: biobb
 
 - name: Install some packages in the environment
