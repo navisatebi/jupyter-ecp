@@ -55,6 +55,3 @@
     - name: Conda add channels
       become: true
       shell: conda config --add channels defaults; conda config --add channels bioconda;conda config --add channels conda-forge
-    - name: Install python
-      become: true
-      shell:  conda install python=3.6
