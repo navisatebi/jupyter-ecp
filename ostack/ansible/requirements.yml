@@ -3,3 +3,8 @@
   scm: git
   src: git+https://github.com/evandam/evandam.conda.git
   version: master  
+  
+- name: ansible-python3-role
+  scm: git
+  src: git+https://github.com/mdklatt/ansible-python3-role.git
+  version: master    
