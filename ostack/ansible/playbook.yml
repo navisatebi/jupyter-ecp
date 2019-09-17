@@ -1,6 +1,6 @@
 ---
 - name: Warming up to be jupyter instance
-  gather_facts: yes
+  gather_facts: no
   hosts: instance_public_ip
   tasks:
   - include_role:
