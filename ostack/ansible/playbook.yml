@@ -5,8 +5,6 @@
   tasks:
   - include_role:
       name: 'evandam.conda'
-  - include_role:
-      name: 'ansible-python3-role'
   - name: Initial connection block
     block:
       - name: Wait 1 minutes, but only start checking after 10 seconds
@@ -19,11 +17,9 @@
 
 - name: Set up conda
   hosts: instance_public_ip
-  gather_facts: yes
   roles:
     - conda
     - evandam.conda
-    - ansible-python3-role
     - conda-packages
 
   tasks:
