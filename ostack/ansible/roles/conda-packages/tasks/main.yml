@@ -1,9 +1,8 @@
    
-#- name: Create a conda environment
-#  conda:
-#    name: python
-#    version: 3.6.5
-#    environment: biobb
+- name: Create a conda environment
+ conda:
+   name: python
+   environment: biobb
 
 - name: Install some packages in the environment
   conda:
