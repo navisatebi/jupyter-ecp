@@ -1,5 +1,10 @@
 
-- name: Activate conda . env 'biobb' and install pip
+- name: Install dependencies for jupyter
+  apt:
+    name: ['python3-pip']
+    state: present
+    
+- name: Activate conda env 'biobb' and install pip
   become: true
-  shell: conda activate biobb; sudo apt-get install python-pip
+  shell: conda activate biobb; pip install jupyter
   
