@@ -1,10 +1,10 @@
    
-- name: Create a conda environment
-  become: true
-  conda:
-   name: python
-   environment: biobb
-   state: present
+#- name: Create a conda environment
+#  become: true
+#  conda:
+#   name: python
+#   environment: biobb
+#   state: present
    
 - name: Install some packages in the environment
   conda:
@@ -16,7 +16,7 @@
          - nglview=1.2.0
          - simpletraj
          - pocl
-     environment: /opt/miniconda3/envs/biobb
+     environment: biobb
      
 #- name: Install some packages in the environment
 #  become: true
