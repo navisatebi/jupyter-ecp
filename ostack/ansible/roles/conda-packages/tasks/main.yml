@@ -16,4 +16,4 @@
   
 - name: Soft link for OpenCL
   become: true
-  shell: ln -s /etc/OpenCL/vendors /home/ubuntu/miniconda3/envs/biobb/etc/OpenCL/vendors
+  shell: sudo ln -s /etc/OpenCL/vendors /home/ubuntu/miniconda3/envs/biobb/etc/OpenCL/vendors
