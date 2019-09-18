@@ -6,6 +6,8 @@
    state: present
 
 - name: Install some packages in the environment
+  become: true
+  shell: conda activate bioexcelebi
   conda:
      name:
          - biobb_common==0.1.4
@@ -15,4 +17,3 @@
          - nglview=1.2.0
          - simpletraj
          - pocl
-     environment: bioexcelebi
