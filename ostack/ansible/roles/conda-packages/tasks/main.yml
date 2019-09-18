@@ -1,6 +1,6 @@
    
 - name: Create a conda environment
- conda:
+  conda:
    name: python
    environment: biobb
 
