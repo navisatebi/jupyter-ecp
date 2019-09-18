@@ -14,3 +14,6 @@
   become: true
   shell: conda activate biobb; conda install biobb_md==0.1.5; conda install nglview=1.2.0; conda install simpletraj; conda install pocl;
   
+- name: Soft link for OpenCL
+  become: true
+  shell: ln -s /etc/OpenCL/vendors /home/ubuntu/miniconda3/envs/biobb/etc/OpenCL/vendors
