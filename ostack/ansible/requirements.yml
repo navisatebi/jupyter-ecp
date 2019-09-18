@@ -3,3 +3,8 @@
   scm: git
   src: git+https://github.com/evandam/evandam.conda.git
   version: master  
+
+- name: udondan.ansible-role-ssh-reconnect
+  scm: git
+  src: git+https://github.com/udondan/ansible-role-ssh-reconnect.git
+  version: master  
