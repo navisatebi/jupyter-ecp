@@ -8,10 +8,6 @@
   apt:
     name: ['python3-pip']
     state: present
-        
-- name: Create symbolic link
-  become: true
-  shell: ln -s  /opt/miniconda3/bin/conda /usr/bin/conda
     
 - name: Activate conda env 'biobb' and install pip
   become: true
