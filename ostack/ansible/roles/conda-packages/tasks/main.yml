@@ -2,7 +2,7 @@
 - name: Create a conda environment
   conda:
    name: python
-   environment: biobb
+   environment: bioexcelebi
 
 - name: Install some packages in the environment
   conda:
@@ -14,4 +14,4 @@
          - nglview=1.2.0
          - simpletraj
          - pocl
-     environment: biobb
+     environment: bioexcelebi
