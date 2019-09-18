@@ -52,6 +52,9 @@
     - name: Create symbolic link
       become: true
       shell: ln -s  /opt/miniconda3/bin/conda /usr/bin/conda
+    - name: run conda init
+      become: true  
+      shell: echo ". /opt/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc ; echo "conda activate" >> ~/.bashrc
     - name: Conda add channels
       become: true
       shell: conda config --add channels defaults; conda config --add channels bioconda;conda config --add channels conda-forge
