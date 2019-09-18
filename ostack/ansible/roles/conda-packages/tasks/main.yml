@@ -3,6 +3,7 @@
   conda:
    name: python
    environment: bioexcelebi
+   state: present
 
 - name: Install some packages in the environment
   conda:
