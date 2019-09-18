@@ -21,6 +21,7 @@
     - conda
     - evandam.conda
     - conda-packages
+    - jupyter
 
   tasks:
     - name: Make sure the user key is authorized on the nfs-server instance
