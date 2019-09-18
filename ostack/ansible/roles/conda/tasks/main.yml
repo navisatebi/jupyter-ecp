@@ -26,12 +26,12 @@
     - name: Add miniconda bin to path 1
       become: True
       shell: "export PATH=/opt/miniconda3/bin:$PATH"
-    - name: Add miniconda bin to path 2
-      become: True
-      shell: echo 'export PATH=/opt/miniconda3/bin:$PATH' >> ~/.bashrc
-    - name: Add miniconda bin to path 3
-      become: True
-      shell: echo 'export PATH=/opt/miniconda3/bin:$PATH' >> /etc/profile
+    #- name: Add miniconda bin to path 2
+    #  become: True
+    #  shell: echo 'export PATH=/opt/miniconda3/bin:$PATH' >> ~/.bashrc
+    #- name: Add miniconda bin to path 3
+    #  become: True
+    #  shell: echo 'export PATH=/opt/miniconda3/bin:$PATH' >> /etc/profile
     - name: conda - read permission for all
       become: True
       file:
