@@ -49,9 +49,9 @@
       shell: source /etc/profile
       args:
           executable: /bin/bash 
-   - some_task:
-     notify:
-      - Kill own ssh connections      
+    - name: SSH reconnect
+      notify:
+       - Kill own ssh connections      
     - name: Create symbolic link
       become: true
       shell: ln -s  /opt/miniconda3/bin/conda /usr/bin/conda
