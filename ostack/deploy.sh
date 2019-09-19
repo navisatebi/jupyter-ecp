@@ -53,4 +53,4 @@ echo "export ANSIBLE_REMOTE_USER=${ANSIBLE_REMOTE_USER}"
 
 # Launch Ansible playbook
 echo -e "\n\t${CYAN}Launch Ansible playbook${NC}\n"
-ansible-playbook -b playbook.yml -e 'ansible_python_interpreter=/usr/bin/python3' -vvv
+ansible-playbook -b playbook.yml -e 'ansible_python_interpreter=/usr/bin/python3' -e 'host_key_checking=False' -vvv
