@@ -54,9 +54,16 @@
     - name: Create symbolic link
       become: true
       shell: ln -s  /opt/miniconda3/bin/conda /usr/bin/conda
-    - name: run conda init
-      become: true  
-      shell: sudo echo ". /opt/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc ; sudo echo "conda activate" >> ~/.bashrc
+    - name: Insert/Update "Match User" configuration block in /etc/ssh/sshd_config
+      become: true
+      blockinfile:
+      path: ~/.bashrc
+      block: |
+      . /opt/miniconda3/etc/profile.d/conda.sh 
+      conda activate
+    #- name: run conda init
+    #  become: true  
+    #  shell: sudo echo ". /opt/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc ; sudo echo "conda activate" >> ~/.bashrc
     - name: Run profile
       become: True
       shell: source ~/.bashrc
