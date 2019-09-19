@@ -1,10 +1,10 @@
    
-- name: Create a conda environment
-  become: true
-  conda:
-    name: python
-    environment: biobb
-    state: present
+#- name: Create a conda environment
+#  become: true
+#  conda:
+#    name: python
+#    environment: biobb
+#    state: present
    
 - name: Install some packages in the environment
   conda:
