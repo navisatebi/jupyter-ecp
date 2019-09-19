@@ -8,6 +8,7 @@
    
 - name: Install some packages in the environment
   conda:
+     environment: biobb
      name:
          - biobb_common=0.1.4
          - biobb_io=0.1.4
