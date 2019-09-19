@@ -44,11 +44,6 @@
         path: /opt/miniconda3/bin
         mode: +x
         recurse: yes  
-    - name: Run profile
-      become: True
-      shell: source /etc/profile
-      args:
-          executable: /bin/bash 
     #- name: tell the host about our servers it might want to ssh to
     #  known_hosts:
     #  path:  /etc/ssh/ssh_known_hosts
@@ -62,6 +57,11 @@
     - name: run conda init
       become: true  
       shell: echo ". /opt/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc ; echo "conda activate" >> ~/.bashrc
+    - name: Run profile
+      become: True
+      shell: source ~/.bashrc
+      args:
+          executable: /bin/bash 
     - name: Conda add channels
       become: true
       shell: conda config --add channels defaults; conda config --add channels bioconda;conda config --add channels conda-forge
