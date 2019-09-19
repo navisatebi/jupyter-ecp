@@ -56,7 +56,7 @@
       shell: ln -s  /opt/miniconda3/bin/conda /usr/bin/conda
     - name: run conda init
       become: true  
-      shell: echo ". /opt/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc ; echo "conda activate" >> ~/.bashrc
+      shell: sudo echo ". /opt/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc ; sudo echo "conda activate" >> ~/.bashrc
     - name: Run profile
       become: True
       shell: source ~/.bashrc
