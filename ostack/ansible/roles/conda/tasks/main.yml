@@ -50,7 +50,7 @@
       args:
           executable: /bin/bash 
     - name: Kill own ssh connections
-      ssh-reconnect:    
+      ssh-reconnect: user={{ANIBLE_SSH_USER}}  
     - name: Create symbolic link
       become: true
       shell: ln -s  /opt/miniconda3/bin/conda /usr/bin/conda
