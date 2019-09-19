@@ -15,8 +15,7 @@
          - biobb_md=0.1.5
          - nglview=1.2.0
          - simpletraj
-         - pocl
-     environment: biobb    
+         - pocl   
      
 #- name: Install some packages in the environment
 #  become: true
