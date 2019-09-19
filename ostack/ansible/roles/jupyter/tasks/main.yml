@@ -11,5 +11,5 @@
     
 - name: Activate conda env 'biobb' and install pip
   become: true
-  shell: conda activate biobb; pip install jupyter
+  shell: source activate biobb; pip3 install jupyter
   
