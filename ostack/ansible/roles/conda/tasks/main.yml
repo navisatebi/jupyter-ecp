@@ -49,8 +49,13 @@
       shell: source /etc/profile
       args:
           executable: /bin/bash 
-    - name: Kill own ssh connections
-      ssh-reconnect: user={{lookup('env','ANSIBLE_REMOTE_USER')}} 
+    #- name: tell the host about our servers it might want to ssh to
+    #  known_hosts:
+    #  path:  /etc/ssh/ssh_known_hosts
+    #  name: {{}}
+    #key: "{{ lookup('file', 'pubkeys/foo.com.invalid') }}"      
+    #- name: Kill own ssh connections
+     # ssh-reconnect: user={{lookup('env','ANSIBLE_REMOTE_USER')}} 
     - name: Create symbolic link
       become: true
       shell: ln -s  /opt/miniconda3/bin/conda /usr/bin/conda
