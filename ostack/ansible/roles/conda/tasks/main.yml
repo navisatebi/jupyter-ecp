@@ -57,7 +57,7 @@
     - name: Insert/Update "Match User" configuration block in /etc/ssh/sshd_config
       become: true
       blockinfile:
-        path: /home/ /.bashrc
+        path: /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
         block: |
          '. /opt/miniconda3/etc/profile.d/conda.sh'
          ' conda activate '
