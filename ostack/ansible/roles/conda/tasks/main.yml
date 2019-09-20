@@ -66,12 +66,12 @@
     #  shell: sudo echo ". /opt/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc ; sudo echo "conda activate" >> ~/.bashrc
     - name: bash - execution permission for all
       become: True
-      shell: "cd"  ; "chmod +x  /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/bin/bash"
+      shell: cd ; chmod +x  /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/bin/bash;
       #  path: /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/bin/bash
       #  mode: +x
     - name: Run profile
       become: True
-      shell: "cd" ; "source /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc"
+      shell: cd ; source /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc;
       args:
           executable: /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/bin/bash 
     - name: Conda add channels
