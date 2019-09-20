@@ -12,4 +12,5 @@
 - name: Activate conda env 'biobb' and install pip
   become: true
   shell: source activate biobb; 
-  
+  args:
+    executable: /bin/bash 
