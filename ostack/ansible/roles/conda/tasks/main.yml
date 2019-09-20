@@ -57,7 +57,7 @@
     - name: Insert/Update "Match User" configuration block in /etc/ssh/sshd_config
       become: true
       blockinfile:
-        path: /home/{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
+        path: /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
         block: |
          ". /opt/miniconda3/etc/profile.d/conda.sh"
          "conda activate"
@@ -66,7 +66,7 @@
     #  shell: sudo echo ". /opt/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc ; sudo echo "conda activate" >> ~/.bashrc
     - name: Run profile
       become: True
-      shell: source /home/{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
+      shell: source /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
       args:
           executable: /bin/bash 
     - name: Conda add channels
