@@ -64,11 +64,11 @@
     #- name: run conda init
     #  become: true  
     #  shell: sudo echo ". /opt/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc ; sudo echo "conda activate" >> ~/.bashrc
-    - name: bash - execution permission for all
-      become: True
-      file: 
-        path: /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/bin/bash
-        mode: +x
+    #- name: bash - execution permission for all
+    #  become: True
+    #  file: 
+    #    path: /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/bin/bash
+    #    mode: +x
     - name: Source .bashrc
       shell: . .bashrc
       become: true
