@@ -20,11 +20,11 @@
 - name: Set up conda
   hosts: instance_public_ip
   roles:
-    - udondan.ssh-reconnect
+    #- udondan.ssh-reconnect
     - conda
     - evandam.conda
-    - conda-packages
-    - jupyter
+    #- conda-packages
+    #- jupyter
 
   tasks:
     - name: Make sure the user key is authorized on the nfs-server instance
