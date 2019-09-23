@@ -15,7 +15,7 @@
         mode: 755
         recurse: yes
     - name: Run the installer
-      shell: /tmp/install-miniconda.sh -b -u -p /opt/miniconda3
+      shell: /tmp/install-miniconda.sh -b -u -p /opt/miniconda3; conda activate
     - name: Wait until the file /opt/miniconda3/bin is present before continuing
       wait_for:
       path: /opt/miniconda3/bin  
@@ -66,7 +66,7 @@
         path: /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
         block: |
          './opt/miniconda3/etc/profile.d/conda.sh'
-         ' conda activate'
+         'conda activate'
     #- name: run conda init
     #  become: true  
     #  shell: sudo echo ". /opt/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc ; sudo echo "conda activate" >> ~/.bashrc
