@@ -11,4 +11,4 @@
     
 - name: Activate conda env 'biobb' and install pip
   become: true
-  shell: . activate biobb;
+  shell: conda activate biobb;
