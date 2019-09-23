@@ -60,6 +60,9 @@
     - name: Create symbolic link
       become: true
       shell: ln -s  /opt/miniconda3/bin/conda /usr/bin/conda
+    - name: Change permisssions for /opt/miniconda3 for ansible   user
+      become: true
+      shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /opt/opt/miniconda3
     - name: Insert/Update "Match User" configuration block in /etc/ssh/sshd_config
       become: true
       blockinfile:
