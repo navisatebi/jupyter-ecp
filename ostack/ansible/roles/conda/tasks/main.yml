@@ -60,7 +60,7 @@
         path: /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
         block: |
          '. /opt/miniconda3/etc/profile.d/conda.sh'
-         ' conda activate '
+         ' conda activate base '
     #- name: run conda init
     #  become: true  
     #  shell: sudo echo ". /opt/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc ; sudo echo "conda activate" >> ~/.bashrc
@@ -72,7 +72,6 @@
     - name: Source .bashrc
       shell: . /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
       become: true
-      
     - name: Conda add channels
       become: true
       shell: conda config --add channels defaults; conda config --add channels bioconda;conda config --add channels conda-forge
