@@ -44,6 +44,12 @@
         path: /opt/miniconda3/bin
         mode: +x
         recurse: yes  
+   - name: conda - execution permission for all
+      become: True
+      file:
+        path: /opt/miniconda3/etc
+        mode: +rx
+        recurse: yes      
     #- name: tell the host about our servers it might want to ssh to
     #  known_hosts:
     #  path:  /etc/ssh/ssh_known_hosts
