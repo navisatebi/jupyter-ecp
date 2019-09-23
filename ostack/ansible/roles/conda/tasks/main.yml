@@ -70,7 +70,8 @@
     #    path: /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/bin/bash
     #    mode: +x
     - name: Source .bashrc
-      shell: . /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
+      #shell: . /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
+      shell: eval "$(cat /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc | tail -n +10)"
       become: true
     - name: Conda add channels
       become: true
