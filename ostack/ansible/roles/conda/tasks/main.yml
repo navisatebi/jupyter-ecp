@@ -80,7 +80,8 @@
     #    mode: +x
     - name: Source .bashrc
       #shell: . /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
-      shell: eval \"$\( cat /home/ubuntu/.bashrc \| tail \-n \+10 \)\"
+      #shell: eval \"$\( cat /home/ubuntu/.bashrc \| tail \-n \+10 \)\"
+      shell: . /home/ubuntu/.bashrc
       become: true
     - name: Conda add channels
       become: true
