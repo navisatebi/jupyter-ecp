@@ -68,7 +68,7 @@
       blockinfile:
         path: /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
         block: |
-         './opt/miniconda3/etc/profile.d/conda.sh'
+         '. /opt/miniconda3/etc/profile.d/conda.sh'
          'conda activate'
     #- name: run conda init
     #  become: true  
