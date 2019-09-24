@@ -1,14 +1,14 @@
-- name: add universe repository for bionic
-  become: true
-  apt_repository: 
-    repo: deb http://archive.ubuntu.com/ubuntu bionic universe
-    state: present
+#- name: add universe repository for bionic
+#  become: true
+#  apt_repository: 
+#    repo: deb http://archive.ubuntu.com/ubuntu bionic universe
+#    state: present
     
-- name: Install dependencies for jupyter
-  apt:
-    name: ['python3-pip']
-    state: present
+#- name: Install dependencies for jupyter
+#  apt:
+#    name: ['python3-pip']
+#    state: present
     
-- name: Activate conda env 'biobb' and install pip
-  become: true
-  shell: sudo -iu {{lookup('env','ANSIBLE_REMOTE_USER')}} && conda activate biobb;
+#- name: Activate conda env 'biobb' and install pip
+#  become: true
+#  shell: sudo -iu {{lookup('env','ANSIBLE_REMOTE_USER')}} && conda activate biobb;
