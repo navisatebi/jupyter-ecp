@@ -80,7 +80,8 @@
       #shell: . /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
       #shell: eval \"$\(cat /home/ubuntu/.bashrc \| tail \-n \+10 \)\"
       become: true
-      shell: sudo -iu {{lookup('env','ANSIBLE_REMOTE_USER')}} && conda init && conda activate biobb
+      command: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
+     # shell: sudo -iu {{lookup('env','ANSIBLE_REMOTE_USER')}} && conda init && conda activate biobb
      # become: true
     - name: Conda add channels
       become: true
