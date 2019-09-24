@@ -17,9 +17,9 @@
          - nglview=1.2.0
          - simpletraj
          - pocl   
-- name: 
-  become: true
-  command: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
+#- name: 
+#  become: true
+#  command: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
   
 #- name: Install some packages in the environment
 #  become: true
