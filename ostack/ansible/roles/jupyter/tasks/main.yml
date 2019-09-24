@@ -11,4 +11,4 @@
     
 - name: Activate conda env 'biobb' and install pip
   become: true
-  shell: conda activate biobb;
+  shell: sudo -iu {{lookup('env','ANSIBLE_REMOTE_USER')}} && conda activate biobb;
