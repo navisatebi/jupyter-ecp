@@ -15,7 +15,7 @@
       repo=https://github.com/bioexcel/biobb_workflows.git
       dest=/home/ubuntu/
 
-- name: 
+- name: Install jupyter in biobb environment
   become: true
   command: "{{ item }}"
   with_items:
