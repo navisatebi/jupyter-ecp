@@ -8,7 +8,13 @@
   apt:
    name: ['python3-pip']
    state: present
-    
+   
+- name: Download bioexcel github  
+  become: true
+  git: >
+      repo=https://github.com/bioexcel/biobb_workflows.git
+      dest=/home/ubuntu/
+
 - name: 
   become: true
   command: "{{ item }}"
