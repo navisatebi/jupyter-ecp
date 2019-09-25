@@ -13,7 +13,7 @@
   become: true
   git: >
       repo=https://github.com/bioexcel/biobb_workflows.git
-      dest=/home/ubuntu/
+      dest=/home/ubuntu/bioexcel
 
 - name: Install jupyter in biobb environment
   become: true
