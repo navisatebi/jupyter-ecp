@@ -22,3 +22,4 @@
     - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
     - pip3 install jupyter
     - cd /home/ubuntu/bioexcel
+    - jupyter notebook
