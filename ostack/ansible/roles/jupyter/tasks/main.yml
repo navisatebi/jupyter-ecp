@@ -24,4 +24,5 @@
     - pip install jupyter
     - jupyter-nbextension enable nglview --py --sys-prefix
     - cd /home/ubuntu/bioexcel
+    - sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} ~/.local/share/jupyter 
     - jupyter notebook 
