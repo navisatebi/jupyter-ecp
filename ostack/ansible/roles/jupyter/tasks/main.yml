@@ -14,7 +14,14 @@
   git: >
       repo=https://github.com/bioexcel/biobb_workflows.git
       dest=/home/ubuntu/bioexcel
-
+     
+- name: conda - execution permission for all
+  become: True
+  file:
+    path: /opt/miniconda3
+    mode: +rwx
+    recurse: yes 
+    
 - name: Install jupyter in biobb environment
   become: true
   command: "{{ item }}"
