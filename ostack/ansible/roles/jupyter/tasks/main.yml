@@ -13,7 +13,7 @@
   become: true
   git: >
       repo=https://github.com/bioexcel/biobb_workflows.git
-      dest=/home/ubuntu/bioexcel
+      dest=/opt/bioexcel
      
 - name: conda - execution permission for all
   become: True
@@ -29,6 +29,6 @@
     - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
     - pip3 install jupyter
     - jupyter-nbextension enable nglview --py --sys-prefix
-    - cd /home/ubuntu/bioexcel
+    - cd /opt/bioexcel
     #- sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} ~/.local/share/jupyter 
     - jupyter notebook --no-browser --port=8889 --allow-root 
