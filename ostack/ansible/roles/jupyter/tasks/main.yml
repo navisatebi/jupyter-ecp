@@ -4,10 +4,10 @@
     repo: deb http://archive.ubuntu.com/ubuntu bionic universe
     state: present
     
-- name: Install dependencies for jupyter
-  apt:
-   name: ['python3-pip']
-   state: present
+#- name: Install dependencies for jupyter
+#  apt:
+#   name: ['python3-pip']
+#   state: present
    
 - name: Download bioexcel github  
   become: true
@@ -20,6 +20,8 @@
   command: "{{ item }}"
   with_items:
     - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
-    - pip3 install jupyter
+    - sudo apt-get install python-pip
+    - pip install jupyter
+    - jupyter-nbextension enable nglview --py --sys-prefix
     - cd /home/ubuntu/bioexcel
     - jupyter notebook
