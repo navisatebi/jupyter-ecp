@@ -21,8 +21,8 @@
   with_items:
     - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
     - sudo apt-get install python-pip
-    - pip install jupyter
+    - pip3 install jupyter
     - jupyter-nbextension enable nglview --py --sys-prefix
     - cd /home/ubuntu/bioexcel
-    #- sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} ~/.local/share/jupyter 
+    - sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} ~/.local/share/jupyter 
     - jupyter notebook 
