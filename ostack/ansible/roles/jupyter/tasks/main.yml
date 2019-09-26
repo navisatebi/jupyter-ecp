@@ -24,4 +24,4 @@
     - pip install jupyter
     - jupyter-nbextension enable nglview --py --sys-prefix
     - cd /home/ubuntu/bioexcel
-    - jupyter notebook --allow-root 
+    - jupyter notebook 
