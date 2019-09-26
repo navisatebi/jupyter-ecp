@@ -18,7 +18,7 @@
 - name: conda - execution permission for all
   become: True
   file:
-    path: /opt/miniconda3
+    path: /opt/
     mode: +rwx
     recurse: yes 
     
