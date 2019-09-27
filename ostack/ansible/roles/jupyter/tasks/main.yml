@@ -25,7 +25,7 @@
   with_items:
     - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
     - pip3 install jupyter
-    - jupyter-nbextension enable nglview --py --sys-prefix
-    - cd /opt/bioexcel
-    - jupyter notebook
+    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter-nbextension enable nglview --py --sys-prefix
+    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && cd /opt/bioexcel
+    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter notebook
   
