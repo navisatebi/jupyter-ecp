@@ -15,7 +15,7 @@
       repo=https://github.com/bioexcel/biobb_workflows.git
       dest=/opt/bioexcel
      
-- name: conda - execution permission for all
+- name: opt - rwx permission for all
   become: True
   file:
     path: /opt/
