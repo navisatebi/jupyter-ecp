@@ -15,7 +15,7 @@
       repo=https://github.com/bioexcel/biobb_workflows.git
       dest=/opt/bioexcel
      
-- name: opt - rwx permission for ansible remote user
+- name: opt - permission for ansible remote user
   become: true
   shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /opt/
     
