@@ -27,4 +27,5 @@
     - pip3 install jupyter
     - jupyter-nbextension enable nglview --py --sys-prefix
     - cd /opt/bioexcel
+    - jupyter notebook
   
