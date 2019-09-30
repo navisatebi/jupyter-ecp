@@ -2,11 +2,15 @@
 - name: Warming up to be jupyter instance
   gather_facts: no
   hosts: instance_public_ip
+  vars_prompt:
+    - name: jpassword
+      prompt: "What is your notebook password?"
+      private:yes    
   tasks:
   - include_role:
       name: 'evandam.conda'
   - include_role:
-      name: 'udondan.ssh-reconnect'    
+      name: 'udondan.ssh-reconnect' 
   - name: Initial connection block
     block:
       - name: Wait 1 minutes, but only start checking after 10 seconds
@@ -20,10 +24,6 @@
 - name: Set up conda
   hosts: instance_public_ip
   roles:
-    - vars_prompt:
-      - name: jpassword
-        prompt: "What is your notebook password?"
-        private:yes
     - conda
     - evandam.conda
     - conda-packages
