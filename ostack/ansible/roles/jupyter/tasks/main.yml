@@ -19,15 +19,24 @@
   become: true
   shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /opt/
     
-- name: Install jupyter in biobb environment
+- name: Install jupyter and add openstack security group in biobb environment
   become: true
   command: "{{ item }}"
   with_items:
     - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
-    - pip3 install jupyter
+    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install jupyter
     - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter-nbextension enable nglview --py --sys-prefix
-    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && cd /opt/bioexcel
     - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && sudo pip3 install python-openstackclient
     - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && openstack server add security group {{lookup('env','external_ip')}} for-jupyter
+  
     #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter notebook
   
+- name: Setting jupyter configurations
+  become: true
+  command: "{{item}}"
+  with_items:
+    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
+    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem
+    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && cd /opt/bioexcel
+    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter notebook --certfile=/home/ubuntu/mycert.pem --keyfile /home/ubuntu/mykey.key
+      
