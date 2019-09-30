@@ -20,7 +20,10 @@
 - name: Set up conda
   hosts: instance_public_ip
   roles:
-    #- udondan.ssh-reconnect
+    - vars_prompt:
+      - name: jpassword
+        prompt: "What is your notebook password?"
+        private:yes
     - conda
     - evandam.conda
     - conda-packages
