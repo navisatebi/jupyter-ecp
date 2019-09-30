@@ -5,7 +5,7 @@
   vars_prompt:
    - name: jpassword
      prompt: "What is your notebook password?"
-     private: yes    
+     private: no   
   tasks:
   - include_role:
       name: 'evandam.conda'
