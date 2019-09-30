@@ -3,9 +3,9 @@
   gather_facts: no
   hosts: instance_public_ip
   vars_prompt:
-    - name: jpassword
-      prompt: "What is your notebook password?"
-      private:yes    
+   - name: jpassword
+     prompt: "What is your notebook password?"
+     private: yes    
   tasks:
   - include_role:
       name: 'evandam.conda'
