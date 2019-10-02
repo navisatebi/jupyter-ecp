@@ -38,9 +38,8 @@
   become: true
   command: "{{item}}"
   with_items:
-   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && cd /opt/bioexcel
-   - jupyter notebook --generate-config  
+   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb  && jupyter notebook --generate-config  
    - echo "c.NotebookApp.password='sha1:fd8fae12903a:8bf7be4731a9ee846b1439bd606cdb85fbc63d2a'">> /home/ubuntu/.jupyter/jupyter_notebook_config.py
    #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter notebook --certfile=/home/ubuntu/mycert.pem --keyfile /home/ubuntu/mykey.key
     
