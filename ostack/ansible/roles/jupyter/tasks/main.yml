@@ -36,7 +36,13 @@
  
 - name: Setting jupyter configurations
   become: true
-  command: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter notebook --generate-config --notebook-dir='/opt/bioexcel/' 
+  command: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter notebook --generate-config
+  register: result
+
+- debug:
+  var: result
+  verbosity: 2
+  
   #command: "{{item}}"
   #with_items:
   # - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && cd /opt/bioexcel
