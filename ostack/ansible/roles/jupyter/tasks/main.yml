@@ -29,15 +29,15 @@
     - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && sudo pip3 install python-openstackclient
     - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && openstack server add security group {{lookup('env','external_ip')}} for-jupyter
  
- - name: Setting jupyter configurations
-   become: true
-   command: "{{item}}"
-   with_items:
-    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
-    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && cd /opt/bioexcel
-    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /home/ubuntu/mykey.key -out /home/ubuntu/mycert.pem
-    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter notebook --generate-config  
-    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && echo "c.NotebookApp.password='sha1:fd8fae12903a:8bf7be4731a9ee846b1439bd606cdb85fbc63d2a'">> /home/ubuntu/.jupyter/jupyter_notebook_config.py
-    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter notebook --certfile=/home/ubuntu/mycert.pem --keyfile /home/ubuntu/mykey.key
+- name: Setting jupyter configurations
+  become: true
+  command: "{{item}}"
+  with_items:
+   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
+   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && cd /opt/bioexcel
+   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /home/ubuntu/mykey.key -out /home/ubuntu/mycert.pem
+   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter notebook --generate-config  
+   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && echo "c.NotebookApp.password='sha1:fd8fae12903a:8bf7be4731a9ee846b1439bd606cdb85fbc63d2a'">> /home/ubuntu/.jupyter/jupyter_notebook_config.py
+   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter notebook --certfile=/home/ubuntu/mycert.pem --keyfile /home/ubuntu/mykey.key
     
     
