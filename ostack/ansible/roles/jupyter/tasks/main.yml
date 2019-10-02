@@ -18,6 +18,13 @@
 - name: opt - permission for ansible remote user
   become: true
   shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /opt/
+  
+- name: Generate OpenSSL key and certificate
+  become: true
+  shell: >
+  openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /home/ubuntu/mykey.key
+  -out /home/ubuntu/mycert.pem -subj "/C=GB/ST=Cambridge/L=Cambridge/O=Global Security/OU=IT Department/CN=ebi.ac.uk/EA=navis@ebi.ac.uk"
+
     
 - name: Install jupyter and add openstack security group in biobb environment
   become: true
@@ -35,7 +42,6 @@
   with_items:
    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && cd /opt/bioexcel
-   - openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /home/ubuntu/mykey.key -out /home/ubuntu/mycert.pem
    #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter notebook --generate-config  
    #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && echo "c.NotebookApp.password='sha1:fd8fae12903a:8bf7be4731a9ee846b1439bd606cdb85fbc63d2a'">> /home/ubuntu/.jupyter/jupyter_notebook_config.py
    #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter notebook --certfile=/home/ubuntu/mycert.pem --keyfile /home/ubuntu/mykey.key
