@@ -39,4 +39,4 @@
       command: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb  && sudo jupyter notebook --generate-config
       register: out
 
-   - debug: var=out.stdout_lines
+    - debug: var=out.stdout_lines
