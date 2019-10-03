@@ -33,13 +33,7 @@
     - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter-nbextension enable nglview --py --sys-prefix
     - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && sudo pip3 install python-openstackclient
     - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && openstack server add security group {{lookup('env','external_ip')}} for-jupyter
- 
-- name: Setting jupyter configurations
-  become: true
-  command: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb  && sudo jupyter notebook --generate-config
-  register: out
 
-- debug: var=out.stdout_lines
   
   #command: "{{item}}"
   #with_items:
