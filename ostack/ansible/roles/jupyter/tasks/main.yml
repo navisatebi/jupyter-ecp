@@ -39,6 +39,8 @@
 - name: Setting jupyter cinfiguration file
   become: true
   script: "{{ lookup('file', 'jupyter_config') }}"
+  args:
+    executable: /bin/bash
    
   
   #command: "{{item}}"
