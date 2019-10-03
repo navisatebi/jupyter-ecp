@@ -1,1 +1,1 @@
-bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && 'conda activate biobb'  && 'sudo jupyter notebook --generate-config'
+sudo jupyter notebook --generate-config
