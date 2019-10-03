@@ -1,1 +1,0 @@
-bash -i /home/ubuntu/.bashrc && conda activate biobb  jupyter notebook --generate-config
