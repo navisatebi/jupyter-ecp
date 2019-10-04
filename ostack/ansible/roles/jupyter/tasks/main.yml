@@ -65,7 +65,7 @@
 - name: Generate jupyter config
   become: true
   #script: "{{ lookup('file', 'jupyter_config.sh') }}"
-  command: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && && conda activate biobb && jupyter notebook --generate-config 
+  command: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb && jupyter notebook --generate-config 
   #with_items:
   # - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
   # - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter notebook --generate-config 
