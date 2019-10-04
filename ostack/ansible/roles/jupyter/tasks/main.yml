@@ -36,9 +36,10 @@
     - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && openstack server add security group {{lookup('env','external_ip')}} for-jupyter
    # - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb:jupyter notebook --generate-config 
 
-- name: Setting jupyter cinfiguration file
+- name: Setting jupyter configuration file
   become: true
-  script: "{{ lookup('file', 'jupyter_config.sh') }}"
+  #script: "{{ lookup('file', 'jupyter_config.sh') }}"
+  command: source /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && source jupyter_config.sh
   #args:
   #  executable: /bin/bash
    
