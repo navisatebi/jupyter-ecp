@@ -50,14 +50,15 @@
 - name: Activate biobb
   become: true
   command: "{{ item }}"
-   with_items:
+  with_items:
+   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
     #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install jupyter
     #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install jupyter-core
 #    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter-nbextension enable nglview --py --sys-prefix
 #    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && sudo pip3 install python-openstackclient
 #    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && openstack server add security group {{lookup('env','external_ip')}} for-jupyter
 #    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter notebook --generate-config
-    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
+    
    # - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb:jupyter notebook --generate-config 
 
 ## become: true
