@@ -35,7 +35,7 @@
   
 - name: Generate jupyter config
   become: true
-  shell: jupyter notebook --generate-config 
+  shell: /usr/bin/jupyter notebook --generate-config 
 
 - name: Enable nglview extension
   become: true
