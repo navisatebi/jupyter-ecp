@@ -23,17 +23,25 @@
   become: true
   shell: openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /home/ubuntu/mykey.key -out /home/ubuntu/mycert.pem -subj "/C=GB/ST=Cambridge/L=Cambridge/O=Global Security/OU=IT Department/CN=ebi.ac.uk/EA=navis@ebi.ac.uk"
 
-    
-- name: Install jupyter and add openstack security group in biobb environment
+- name: Install jupyter
   become: true
-  command: "{{ item }}"
-  with_items:
-    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install jupyter
-    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install jupyter-core
-    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter-nbextension enable nglview --py --sys-prefix
-    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && sudo pip3 install python-openstackclient
-    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && openstack server add security group {{lookup('env','external_ip')}} for-jupyter
-    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter notebook --generate-config
+  shell: sudo snap install jupyter
+  
+- name: Install jupyter core
+  become: true
+  shell: sudo apt install jupyter-core
+  
+  
+#- name: Install jupyter and add openstack security group in biobb environment
+#  become: true
+#  command: "{{ item }}"
+#  with_items:
+    #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install jupyter
+    #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install jupyter-core
+#    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter-nbextension enable nglview --py --sys-prefix
+#    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && sudo pip3 install python-openstackclient
+#    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && openstack server add security group {{lookup('env','external_ip')}} for-jupyter
+#    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter notebook --generate-config
     #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
    # - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb:jupyter notebook --generate-config 
 
