@@ -41,8 +41,7 @@
   #script: "{{ lookup('file', 'jupyter_config.sh') }}"
   command: "{{item}}"
   with_items:
-   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
-   - conda activate biobb 
+   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
    - jupyter notebook --generate-config 
   
   #args:
