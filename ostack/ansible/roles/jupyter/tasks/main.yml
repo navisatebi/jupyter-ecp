@@ -42,7 +42,7 @@
   command: "{{item}}"
   with_items:
    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
-   - jupyter notebook --generate-config 
+   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter notebook --generate-config 
   
   #args:
   #  executable: /bin/bash
