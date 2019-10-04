@@ -25,11 +25,13 @@
 
 - name: Install jupyter
   become: true
-  shell: sudo snap install jupyter
+  shell: snap install jupyter
   
 - name: Install jupyter core
   become: true
-  shell: sudo apt install jupyter-core
+  apt:
+   name: ['jupyter-core']
+   state: present 
   
   
 #- name: Install jupyter and add openstack security group in biobb environment
