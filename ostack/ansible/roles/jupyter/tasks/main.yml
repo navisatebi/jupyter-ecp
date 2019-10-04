@@ -39,7 +39,12 @@
 - name: Setting jupyter configuration file
   become: true
   #script: "{{ lookup('file', 'jupyter_config.sh') }}"
-  command: source /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && source jupyter_config.sh
+  command: "{{item}}"
+  with_items:
+   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
+   - conda activate biobb 
+   - jupyter notebook --generate-config 
+  
   #args:
   #  executable: /bin/bash
    
