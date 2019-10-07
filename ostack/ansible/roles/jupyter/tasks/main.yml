@@ -86,7 +86,7 @@
   
 - name: Generate jupyter config
   become: true
-  shell: jupyter notebook --generate-config
+  shell: jupyter notebook --generate-config --config-dir='/home/ubuntu/'
   #args:
   #  executable: /usr/bin/env bash
   #command: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb && jupyter notebook --generate-config --config-dir=/home/ubuntu/
