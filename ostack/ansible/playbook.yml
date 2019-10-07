@@ -11,6 +11,8 @@
       name: 'evandam.conda'
   - include_role:
       name: 'udondan.ssh-reconnect' 
+  - include_role:
+      name: 'yuriyguts.jupyter'
   - name: Initial connection block
     block:
       - name: Wait 1 minutes, but only start checking after 10 seconds
@@ -24,11 +26,16 @@
 - name: Set up conda
   hosts: instance_public_ip
   roles:
-    - udondan.ssh-reconnect
+   #- udondan.ssh-reconnect
     - conda
     - evandam.conda
     - conda-packages
-    - jupyter
+    - yuriyguts.jupyter
+      jupyter_ip: '*'
+      jupyter_port: 8888
+      jupyter_plaintext_password: jupytersecret
+      jupyter_daemon_enable: yes
+    - jupyter  
 
   tasks:
     - name: Make sure the user key is authorized on the nfs-server instance
