@@ -1,13 +1,13 @@
 - name: add universe repository for bionic
   become: yes
-  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
+  #become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   apt_repository: 
    repo: deb http://archive.ubuntu.com/ubuntu bionic universe
    state: present
     
 - name: Install dependencies for jupyter
   become: yes 
-  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
+  #become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   apt:
    name: ['python3-pip']
    state: present
@@ -84,17 +84,17 @@
   
 - name: Generate jupyter config
   become: yes
-  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
+  #become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   shell: jupyter notebook --generate-config 
   
 - name: Activate biobb
   become: true
-  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
+  #become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   command: "{{ item }}"
   with_items:
    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && cd /opt/bioexcel
-   - jupyter notebook
+   - jupyter notebook --allow-root
    
   #args:
   #  executable: /usr/bin/env bash
