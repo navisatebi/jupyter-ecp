@@ -24,6 +24,7 @@
 - name: Set up conda
   hosts: instance_public_ip
   roles:
+    - udondan.ssh-reconnect
     - conda
     - evandam.conda
     - conda-packages
