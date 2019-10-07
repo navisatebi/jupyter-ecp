@@ -1,9 +1,9 @@
-- name: add universe repository for bionic
-  become: yes
-  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
-  apt_repository: 
-    repo: deb http://archive.ubuntu.com/ubuntu bionic universe
-    state: present
+#- name: add universe repository for bionic
+#  become: yes
+#  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
+#  apt_repository: 
+#    repo: deb http://archive.ubuntu.com/ubuntu bionic universe
+#    state: present
     
 #- name: Install dependencies for jupyter
 #  become: yes
