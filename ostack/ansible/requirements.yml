@@ -8,3 +8,8 @@
   scm: git
   src: git+https://github.com/udondan/ansible-role-ssh-reconnect.git
   version: master  
+
+- name:
+  scm: git
+  src: git+https://github.com/YuriyGuts/ansible-role-jupyter.git
+  version: master
