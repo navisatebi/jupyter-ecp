@@ -23,9 +23,14 @@
   become: true
   shell: openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /home/ubuntu/mykey.key -out /home/ubuntu/mycert.pem -subj "/C=GB/ST=Cambridge/L=Cambridge/O=Global Security/OU=IT Department/CN=ebi.ac.uk/EA=navis@ebi.ac.uk"
 
-#- name: Install jupyter
-#  become: true
-#  shell: snap install jupyter
+- name: Install jupyter
+  become: true  
+  roles:
+  - role: yuriyguts.jupyter
+    jupyter_ip: "{{lookup('env','ANSIBLE_REMOTE_USER')}}" 
+    jupyter_port: 8888
+    jupyter_plaintext_password: jupytersecret
+    jupyter_daemon_enable: yes
   
 #- name: Install jupyter core
 #  become: true
