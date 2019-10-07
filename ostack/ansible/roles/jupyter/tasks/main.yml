@@ -71,12 +71,12 @@
     systemctl daemon-reload
     systemctl restart jupyter.service
   
-   #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && /opt/miniconda3/envs/biobb/bin/jupyter notebook --generate-config
-    
-   # - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb:jupyter notebook --generate-config 
+
+#- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && /opt/miniconda3/envs/biobb/bin/jupyter notebook --generate-config    
+# - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb:jupyter notebook --generate-config 
 #- name: /home/ubuntu - permission for ansible remote user
 #  become: true
- # shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /home/ubuntu
+# shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /home/ubuntu
   
 - name: Generate jupyter config
   become: true
