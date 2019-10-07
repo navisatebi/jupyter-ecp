@@ -67,9 +67,9 @@
 - name: Enable Jupyter daemon
   become: yes
   shell: |
-  systemctl enable jupyter.service
-  systemctl daemon-reload
-  systemctl restart jupyter.service
+    systemctl enable jupyter.service
+    systemctl daemon-reload
+    systemctl restart jupyter.service
   
    #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && /opt/miniconda3/envs/biobb/bin/jupyter notebook --generate-config
     
