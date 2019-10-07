@@ -69,7 +69,7 @@
   become: true
   script: "{{ lookup('file', 'jupyter_config.sh') }}"
   args:
-    executable: /bin/bash
+    executable: /usr/bin/env bash
   #command: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb && jupyter notebook --generate-config --config-dir=/home/ubuntu/
   #with_items:
   # - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
