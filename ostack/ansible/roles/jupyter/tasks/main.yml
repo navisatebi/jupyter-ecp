@@ -86,6 +86,7 @@
   
 - name: Activate biobb
   become: true
+  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   command: "{{ item }}"
   with_items:
    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
