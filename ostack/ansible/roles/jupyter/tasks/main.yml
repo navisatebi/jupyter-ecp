@@ -17,6 +17,10 @@
   git: >
       repo=https://github.com/bioexcel/biobb_workflows.git
       dest=/opt/bioexcel
+      
+- easy_install:
+    name: pip
+    state: latest      
      
 #- name: opt - permission for ansible remote user
 #  become: true
