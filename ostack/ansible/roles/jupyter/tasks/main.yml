@@ -1,13 +1,16 @@
 - name: add universe repository for bionic
-  become: true
+  become: yes
+  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   apt_repository: 
     repo: deb http://archive.ubuntu.com/ubuntu bionic universe
     state: present
     
-- name: Install dependencies for jupyter
-  apt:
-   name: ['python3-pip']
-   state: present
+#- name: Install dependencies for jupyter
+#  become: yes
+# become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
+#  apt:
+#   name: ['python3-pip']
+#   state: present
    
 - name: Download bioexcel github  
   become: true
@@ -15,9 +18,9 @@
       repo=https://github.com/bioexcel/biobb_workflows.git
       dest=/opt/bioexcel
      
-- name: opt - permission for ansible remote user
-  become: true
-  shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /opt/
+#- name: opt - permission for ansible remote user
+#  become: true
+ # shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /opt/
   
 - name: Generate OpenSSL key and certificate
   become: true
