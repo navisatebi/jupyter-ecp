@@ -3,12 +3,6 @@
   apt_repository: 
     repo: deb http://archive.ubuntu.com/ubuntu bionic universe
     state: present
-
-- name: add repository for jupyter-kernel
-  become: true
-  apt_repository:
-    repo: https://github.com/ansible/ansible-jupyter-kernel
-    state: present
     
 - name: Install dependencies for jupyter
   apt:
@@ -60,8 +54,6 @@
    #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install jupyter
    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install jupyter-core
-   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip install ansible-kernel
-   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && python -m ansible_kernel.install --sys-prefix
    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter-nbextension enable nglview --py --sys-prefix
    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install python-openstackclient
    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc &&  ln -s  /opt/miniconda3/envs/biobb/bin/jupyter /usr/bin/jupyter
