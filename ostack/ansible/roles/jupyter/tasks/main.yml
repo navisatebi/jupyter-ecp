@@ -1,26 +1,22 @@
-#- name: add universe repository for bionic
-#  become: yes
-#  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
-#  apt_repository: 
-#    repo: deb http://archive.ubuntu.com/ubuntu bionic universe
-#    state: present
+- name: add universe repository for bionic
+  become: yes
+  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
+  apt_repository: 
+   repo: deb http://archive.ubuntu.com/ubuntu bionic universe
+   state: present
     
-#- name: Install dependencies for jupyter
-#  become: yes
-# become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
-#  apt:
-#   name: ['python3-pip']
-#   state: present
+- name: Install dependencies for jupyter
+  become: yes 
+  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
+  apt:
+   name: ['python3-pip']
+   state: present
    
 - name: Download bioexcel github  
   become: true
   git: >
       repo=https://github.com/bioexcel/biobb_workflows.git
       dest=/opt/bioexcel
-      
-- easy_install:
-    name: pip
-    state: latest      
      
 #- name: opt - permission for ansible remote user
 #  become: true
