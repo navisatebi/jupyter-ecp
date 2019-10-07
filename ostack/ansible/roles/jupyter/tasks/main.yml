@@ -58,12 +58,7 @@
 #   name: ['python-openstackclient']
  #  state: present 
    
-#- name: Activate biobb
-#  become: true
-#  command: "{{ item }}"
-#  with_items:
-   #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
-   #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install jupyter
+
    #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install jupyter-core
    #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter-nbextension enable nglview --py --sys-prefix
    #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install python-openstackclient
@@ -85,8 +80,18 @@
 # shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /home/ubuntu
   
 - name: Generate jupyter config
+  become: yes
+  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
+  shell: jupyter notebook --generate-config 
+  
+- name: Activate biobb
   become: true
-  shell: jupyter notebook --generate-config --config-dir='/home/ubuntu/'
+  command: "{{ item }}"
+  with_items:
+   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
+   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && cd /opt/bioexcel
+   - jupyter notebook
+   
   #args:
   #  executable: /usr/bin/env bash
   #command: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb && jupyter notebook --generate-config --config-dir=/home/ubuntu/
