@@ -31,7 +31,7 @@
     - evandam.conda
     - conda-packages
     - yuriyguts.jupyter
-      jupyter_ip: '*'
+      jupyter_ip: "{{lookup('env','ANSIBLE_REMOTE_USER')}}" 
       jupyter_port: 8888
       jupyter_plaintext_password: jupytersecret
       jupyter_daemon_enable: yes
