@@ -31,12 +31,18 @@
 #    jupyter_port: 8888
 #    jupyter_plaintext_password: jupytersecret
 #    jupyter_daemon_enable: yes
-  
-#- name: Install jupyter core
-#  become: true
-#  apt:
-#   name: ['jupyter-core']
-#   state: present 
+
+- name: Install jupyter 
+  become: true
+  pip:
+   name: ['jupyter']
+   state: present 
+   
+- name: Install jupyter core
+  become: true
+  pip:
+   name: ['jupyter-core']
+   state: present 
   
 #- name: Generate jupyter config
  # become: true
@@ -52,24 +58,24 @@
 #   name: ['python-openstackclient']
  #  state: present 
    
-- name: Activate biobb
-  become: true
-  command: "{{ item }}"
-  with_items:
+#- name: Activate biobb
+#  become: true
+#  command: "{{ item }}"
+#  with_items:
    #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
-   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install jupyter
-   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install jupyter-core
-   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter-nbextension enable nglview --py --sys-prefix
-   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install python-openstackclient
-   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && openstack server add security group {{lookup('env','external_ip')}} for-jupyter
+   #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install jupyter
+   #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install jupyter-core
+   #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && jupyter-nbextension enable nglview --py --sys-prefix
+   #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && pip3 install python-openstackclient
+   #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && openstack server add security group {{lookup('env','external_ip')}} for-jupyter
   
   
-- name: Enable Jupyter daemon
-  become: yes
-  shell: |
-    systemctl enable jupyter.service
-    systemctl daemon-reload
-    systemctl restart jupyter.service
+#- name: Enable Jupyter daemon
+#  become: yes
+#  shell: |
+#   systemctl enable jupyter.service
+#    systemctl daemon-reload
+ #   systemctl restart jupyter.service
   
 
 #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && /opt/miniconda3/envs/biobb/bin/jupyter notebook --generate-config    
