@@ -90,7 +90,7 @@
 - name: Start notebook
   become: true
   #become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
-  raw: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && cd /opt/bioexcel && jupyter notebook --allow-root --port=8888 --no-browser --certfile=/home/ubuntu/mycert.pem --keyfile /home/ubuntu/mykey.key >> /opt/output.txt
+  raw: cd /opt/bioexcel && jupyter notebook --allow-root --port=8888 --no-browser --certfile=/home/ubuntu/mycert.pem --keyfile /home/ubuntu/mykey.key >> /opt/output.txt
  # with_items:
  #  -
  
