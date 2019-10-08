@@ -92,8 +92,8 @@
   #become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   command: "{{ item }}"
   with_items:
-   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
-   - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && cd /opt/bioexcel
+   # - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb && cd /opt/bioexcel
+   #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && cd /opt/bioexcel
    - jupyter notebook --allow-root --port=8888 --no-browser --certfile=/home/ubuntu/mycert.pem --keyfile /home/ubuntu/mykey.key
    
   #args:
