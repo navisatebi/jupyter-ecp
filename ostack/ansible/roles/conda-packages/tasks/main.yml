@@ -8,7 +8,7 @@
    
 - name: Install some packages in the environment
   conda:
-     environment: biobb
+     environment: base
      name:
          - biobb_common=0.1.4
          - biobb_io=0.1.4
@@ -31,4 +31,4 @@
   
 - name: Soft link for OpenCL
   become: true
-  shell: sudo ln -s /etc/OpenCL/vendors /opt/miniconda3/envs/biobb/etc/OpenCL/vendors
+  shell: sudo ln -s /etc/OpenCL/vendors /opt/miniconda3/envs/base/etc/OpenCL/vendors
