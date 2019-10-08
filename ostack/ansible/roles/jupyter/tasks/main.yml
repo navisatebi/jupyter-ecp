@@ -18,9 +18,9 @@
       repo=https://github.com/bioexcel/biobb_workflows.git
       dest=/opt/bioexcel
      
-#- name: opt - permission for ansible remote user
-#  become: true
- # shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /opt/
+- name: opt - permission for ansible remote user
+  become: true
+  shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /opt/
   
 - name: Generate OpenSSL key and certificate
   become: true
@@ -89,11 +89,10 @@
   
 - name: Activate biobb
   become: true
-  #become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
+  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   command: "{{ item }}"
   with_items:
-   # - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb && cd /opt/bioexcel
-   #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && cd /opt/bioexcel
+   - conda activate biobb && cd /opt/bioexcel
    - jupyter notebook --allow-root --port=8888 --no-browser --certfile=/home/ubuntu/mycert.pem --keyfile /home/ubuntu/mykey.key
    
   #args:
