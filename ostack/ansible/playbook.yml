@@ -26,7 +26,6 @@
 - name: Set up conda
   hosts: instance_public_ip
   become: yes
-  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   roles:
    #- udondan.ssh-reconnect
     - conda
@@ -37,7 +36,6 @@
   tasks:
     - name: Make sure the user key is authorized on the nfs-server instance
       become: yes
-      become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
       authorized_key: user="{{lookup('env','ANSIBLE_REMOTE_USER')}}" key="{{lookup('env','ssh_key')}}" exclusive=no state=present
 
      
