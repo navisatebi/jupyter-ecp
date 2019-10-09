@@ -1,13 +1,16 @@
 - name: Install Conda
   block:
     - name: Download Miniconda
+      become: yes
+      become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
       get_url:
         url: https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
         dest: /tmp/install-miniconda.sh
         checksum: md5:1c945f2b3335c7b2b15130b1b2dc5cf4
         mode: 0550
     - name: Create conda folder
-      become: True
+      become: yes
+      become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
       file:
         path: /opt/miniconda3
         state: directory
@@ -15,11 +18,17 @@
         mode: 755
         recurse: yes
     - name: Run the installer
+      become: yes
+      become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
       shell: /tmp/install-miniconda.sh -b -u -p /opt/miniconda3
     - name: Wait until the file /opt/miniconda3/bin is present before continuing
+      become: yes
+      become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
       wait_for:
       path: /opt/miniconda3/bin  
     - name: Remove the installer
+      become: yes
+      become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
       file:
         state: absent
         path: /tmp/install-miniconda.sh
@@ -33,19 +42,22 @@
     #  become: True
     #  shell: echo 'export PATH=/opt/miniconda3/bin:$PATH' >> /etc/profile
     - name: conda - read permission for all
-      become: True
+      become: yes
+      become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
       file:
         path: /opt/miniconda3
         mode: +r
         recurse: yes
     - name: conda - execution permission for all
-      become: True
+      become: yes
+      become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
       file:
         path: /opt/miniconda3/bin
         mode: +x
         recurse: yes  
     - name: conda - execution permission for all
-      become: True
+      become: yes
+      become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
       file:
        path: /opt/miniconda3/etc
        mode: +rwx
@@ -58,13 +70,16 @@
    # - name: Kill own ssh connections
    #   ssh-reconnect: user="{{lookup('env','ANSIBLE_REMOTE_USER')}}"
     - name: Create symbolic link
-      become: true
+      become: yes
+      become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
       shell: ln -s  /opt/miniconda3/bin/conda /usr/bin/conda
     - name: Change permisssions for /opt/miniconda3 for ansible   user
-      become: true
+      become: yes
+      become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
       shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /opt/miniconda3
     - name: Add conda config to bashrc
-      become: true
+     become: yes
+     become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
       blockinfile:
         path: /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
         block: "{{ lookup('file', 'bashrc_part') }}"
@@ -79,10 +94,12 @@
     - name: Source .bashrc
       #shell: . /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
       #shell: eval \"$\(cat /home/ubuntu/.bashrc \| tail \-n \+10 \)\"
-      become: true
+      become: yes
+      become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
       command: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
      # shell: sudo -iu {{lookup('env','ANSIBLE_REMOTE_USER')}} && conda init && conda activate biobb
      # become: true
     - name: Conda add channels
-      become: true
+      become: yes
+      become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
       shell: conda config --add channels defaults; conda config --add channels bioconda;conda config --add channels conda-forge
