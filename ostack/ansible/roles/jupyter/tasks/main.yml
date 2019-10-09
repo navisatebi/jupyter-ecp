@@ -82,12 +82,10 @@
   
 - name: Generate jupyter config
   become: yes
-  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   shell: jupyter notebook --generate-config 
   
 - name: Start notebook
   become: yes
-  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   raw: "{{ lookup('file', 'jupyter_notebook') }}"
  # with_items:
  #  -
