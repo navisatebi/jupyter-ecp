@@ -11,8 +11,6 @@
       name: 'evandam.conda'
   - include_role:
       name: 'udondan.ssh-reconnect' 
-  - include_role:
-      name: 'ansible-pip'
   - name: Initial connection block
     block:
       - name: Wait 1 minutes, but only start checking after 10 seconds
@@ -31,7 +29,6 @@
     - conda
     - evandam.conda
     - conda-packages
-    - ansible-pip
     - jupyter  
 
   tasks:
