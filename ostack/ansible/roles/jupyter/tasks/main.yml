@@ -16,21 +16,6 @@
       repo=https://github.com/bioexcel/biobb_workflows.git
       dest=/opt/bioexcel
 
-- name: Download ansible kernel
-  become: yes
-  git: >
-      repo=https://github.com/ansible/ansible-jupyter-kernel.git
-      dest=/home/ubuntu/ansible-jupyter-kernel
-
-- name: install the package, force upgrade
-  pip:
-    name: pip
-    executable: pip3
-    state: latest
-
-- name: Install ansible kernel
-  become: yes
-  shell: 
  
 #- name: opt - permission for ansible remote user
 #  become: true
