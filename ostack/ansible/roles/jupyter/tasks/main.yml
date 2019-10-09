@@ -1,19 +1,20 @@
 - name: add universe repository for bionic
   become: yes
-  #become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
+  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   apt_repository: 
    repo: deb http://archive.ubuntu.com/ubuntu bionic universe
    state: present
     
 - name: Install dependencies for jupyter
   become: yes 
-  #become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
+  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   apt:
    name: ['python3-pip']
    state: present
    
 - name: Download bioexcel github  
-  become: true
+  become: yes
+  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   git: >
       repo=https://github.com/bioexcel/biobb_workflows.git
       dest=/opt/bioexcel
@@ -23,7 +24,8 @@
 #  shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /opt/
   
 - name: Generate OpenSSL key and certificate
-  become: true
+  become: yes
+  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   shell: openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /home/ubuntu/mykey.key -out /home/ubuntu/mycert.pem -subj "/C=GB/ST=Cambridge/L=Cambridge/O=Global Security/OU=IT Department/CN=ebi.ac.uk/EA=navis@ebi.ac.uk"
 
 #- name: Install jupyter
@@ -36,13 +38,15 @@
 #    jupyter_daemon_enable: yes
 
 - name: Install jupyter 
-  become: true
+  become: yes
+  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   pip:
    name: ['jupyter']
    state: present 
    
 - name: Install jupyter core
-  become: true
+  become: yes
+  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   pip:
    name: ['jupyter-core']
    state: present 
@@ -84,12 +88,12 @@
   
 - name: Generate jupyter config
   become: yes
-  #become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
+  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   shell: jupyter notebook --generate-config 
   
 - name: Start notebook
-  become: true
-  #become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
+  become: yes
+  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   raw: "{{ lookup('file', 'jupyter_notebook') }}"
  # with_items:
  #  -
