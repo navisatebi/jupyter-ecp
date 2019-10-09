@@ -7,7 +7,8 @@
 #    state: present
    
 - name: Install some packages in the environment
-  become: true
+  become: yes
+  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   conda:
      environment: biobb
      name:
@@ -31,5 +32,6 @@
 #  shell: conda activate biobb; conda install biobb_md==0.1.5; conda install nglview=1.2.0; conda install simpletraj; conda install pocl;
   
 - name: Soft link for OpenCL
-  become: true
+  become: yes
+  become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   shell: sudo ln -s /etc/OpenCL/vendors /opt/miniconda3/envs/biobb/etc/OpenCL/vendors
