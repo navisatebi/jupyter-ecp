@@ -15,7 +15,17 @@
   git: >
       repo=https://github.com/bioexcel/biobb_workflows.git
       dest=/opt/bioexcel
-     
+
+- name: Download bioexcel github  
+  become: yes
+  git: >
+      repo=https://github.com/ansible/ansible-jupyter-kernel.git
+      dest=/home/ubuntu/ansible-jupyter-kernel
+      
+- name: Install ansible kernel  
+  become: yes
+  raw: cd ansible-jupyter-kernel && pip install -e . && python -m ansible_kernel.install
+  
 #- name: opt - permission for ansible remote user
 #  become: true
 #  shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /opt/
