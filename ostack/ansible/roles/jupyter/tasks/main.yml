@@ -24,7 +24,8 @@
       
 - name: Install ansible kernel  
   become: yes
-  raw: cd ansible-jupyter-kernel && pip install -e . && python -m ansible_kernel.install
+  pip:
+   git+https://github.com/ansible/ansible-jupyter-kernel.git
   
 #- name: opt - permission for ansible remote user
 #  become: true
