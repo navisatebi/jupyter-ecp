@@ -28,10 +28,10 @@
   become: yes
   roles:
    #- udondan.ssh-reconnect
-    - ansible-pip
     - conda
     - evandam.conda
     - conda-packages
+    - ansible-pip
     - jupyter  
 
   tasks:
