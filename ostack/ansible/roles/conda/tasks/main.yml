@@ -78,8 +78,8 @@
       become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
       shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /opt/miniconda3
     - name: Add conda config to bashrc
-     become: yes
-     become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
+      become: yes
+      become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
       blockinfile:
         path: /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
         block: "{{ lookup('file', 'bashrc_part') }}"
