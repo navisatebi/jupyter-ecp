@@ -1,7 +1,6 @@
 - name: Install Conda
   block:
     - name: Download Miniconda
-      become: yes
       get_url:
         url: https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
         dest: /tmp/install-miniconda.sh
@@ -16,14 +15,12 @@
         mode: 755
         recurse: yes
     - name: Run the installer
-      become: yes
       shell: /tmp/install-miniconda.sh -b -u -p /opt/miniconda3
     - name: Wait until the file /opt/miniconda3/bin is present before continuing
       become: yes
       wait_for:
       path: /opt/miniconda3/bin  
     - name: Remove the installer
-      become: yes
       file:
         state: absent
         path: /tmp/install-miniconda.sh
@@ -44,7 +41,6 @@
         recurse: yes
     - name: conda - execution permission for all
       become: yes
-      become_user : "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
       file:
         path: /opt/miniconda3/bin
         mode: +x
