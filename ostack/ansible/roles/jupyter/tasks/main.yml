@@ -107,6 +107,7 @@
   become: yes
   shell: jupyter notebook --allow-root --no-browser --certfile="/opt/openssl/mycert.pem" --keyfile="/opt/openssl/mykey.key" 
   register: jupyter_output
+  timeout: 120
   
 - name: Look for token
   become: yes
