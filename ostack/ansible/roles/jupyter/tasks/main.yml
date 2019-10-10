@@ -105,8 +105,8 @@
   
 - name: Start notebook
   become: yes
-  shell: jupyter notebook --allow-root --no-browser --certfile="/opt/openssl/mycert.pem" --keyfile="/opt/openssl/mykey.key" 
-  async: 45
+  shell: jupyter notebook --allow-root 
+  async: 145
   poll: 5
   
   # with_items:
