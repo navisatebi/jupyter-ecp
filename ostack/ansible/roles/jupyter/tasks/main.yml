@@ -87,8 +87,7 @@
   
 - name: Start notebook
   become: yes
-  shell: jupyter-notebook --allow-root --port=8888 --no-browser --certfile=/home/ubuntu/mycert.pem --keyfile /home/ubuntu/mykey.key 
-
+  shell: jupyter notebook 
  # with_items:
  #  -
  
