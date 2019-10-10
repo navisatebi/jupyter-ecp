@@ -23,8 +23,14 @@
   
 - name: Generate OpenSSL key and certificate
   become: yes
-  shell: openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /home/ubuntu/mykey.key -out /home/ubuntu/mycert.pem -subj "/C=GB/ST=Cambridge/L=Cambridge/O=Global Security/OU=IT Department/CN=ebi.ac.uk/EA=navis@ebi.ac.uk"
+  shell: openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /opt/openssl/mykey.key -out /opt/openssl/mycert.pem -subj "/C=GB/ST=Cambridge/L=Cambridge/O=Global Security/OU=IT Department/CN=ebi.ac.uk/EA=navis@ebi.ac.uk"
 
+- name: openssl - execution permission for all
+  become: yes
+  file:
+    path: /opt/openssl
+    mode: +rwx
+    
 #- name: Install jupyter
 #  become: true  
 #  roles:
