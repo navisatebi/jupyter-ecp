@@ -106,7 +106,13 @@
 - name: Start notebook
   become: yes
   shell: jupyter notebook --allow-root --no-browser --certfile="/opt/openssl/mycert.pem" --keyfile="/opt/openssl/mykey.key" 
- # with_items:
+  register: jupyter_output
+  
+- name: Look for token
+  become: yes
+  command: echo {{ jupyter_output.stdout }}
+  
+  # with_items:
  #  -
  
    
