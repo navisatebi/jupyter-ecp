@@ -106,12 +106,8 @@
 - name: Start notebook
   become: yes
   shell: jupyter notebook --allow-root --no-browser --certfile="/opt/openssl/mycert.pem" --keyfile="/opt/openssl/mykey.key" 
-  register: jupyter_output
-  timeout: 120
-  
-- name: Look for token
-  become: yes
-  command: echo {{ jupyter_output.stdout }}
+  async: 45
+  poll: 5
   
   # with_items:
  #  -
