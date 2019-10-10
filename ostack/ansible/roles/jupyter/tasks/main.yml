@@ -87,7 +87,7 @@
   
 - name: Start notebook
   become: yes
-  shell: jupyter notebook 
+  shell: jupyter notebook --allow-root 
  # with_items:
  #  -
  
