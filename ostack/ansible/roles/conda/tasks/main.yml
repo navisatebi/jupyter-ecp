@@ -87,7 +87,12 @@
     - name: Conda add channels
       become: yes
       shell: conda config --add channels defaults; conda config --add channels bioconda;conda config --add channels conda-forge
-      
+     
+    - name: Add hostname to 
+      become: yes
+      blockinfile:
+        path: /etc/hosts
+        block:"{{ lookup('file', 'add_to_etc_host)}}"
     - name: add universe repository for bionic
       become: yes
       apt_repository: 
