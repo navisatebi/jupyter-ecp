@@ -89,9 +89,9 @@
 #  become: true
 # shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /home/ubuntu
   
-- name: Generate jupyter config
-  become: yes
-  shell: jupyter notebook --generate-config 
+#- name: Generate jupyter config
+#  become: yes
+#  shell: jupyter notebook --generate-config 
   
 - name: Start notebook
   become: yes
