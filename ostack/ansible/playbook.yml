@@ -19,7 +19,7 @@
           timeout: 60
     rescue:
       - name: Try to install python 2, when ansible is not able to connect
-        raw: test -e /usr/bin/python || (apt -y update && apt install -y python)
+        raw: test -e /usr/bin/python || (apt -y update && apt install -y python3.7)
 
 - name: Set up conda
   hosts: instance_public_ip
