@@ -51,6 +51,9 @@ ansible-galaxy install -r requirements.yml
 export ANSIBLE_REMOTE_USER="${TF_VAR_remote_user:-ubuntu}"
 echo "export ANSIBLE_REMOTE_USER=${ANSIBLE_REMOTE_USER}"
 
+export name="${name}"
+echo "export name="${name}"
+
 # Launch Ansible playbook
 echo -e "\n\t${CYAN}Launch Ansible playbook${NC}\n"
 ansible-playbook -b playbook.yml -e 'ansible_python_interpreter=/usr/bin/python3' -e 'host_key_checking=False' -vvv
