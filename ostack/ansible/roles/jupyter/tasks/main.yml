@@ -43,26 +43,26 @@
     path: /opt/openssl/mykey.key
     mode: '0600'
     
-#- name: Install jupyter
-#  become: true  
-#  roles:
-#  - role: 'yuriyguts.jupyter'
-#    jupyter_ip: "{{lookup('env','ANSIBLE_REMOTE_USER')}}" 
-#    jupyter_port: 8888
-#    jupyter_plaintext_password: jupytersecret
-#    jupyter_daemon_enable: yes
+- name: Install jupyter
+  become: true  
+  roles:
+  - role: 'yuriyguts.jupyter'
+    jupyter_ip: "{{lookup('env','ANSIBLE_REMOTE_USER')}}" 
+    jupyter_port: 8888
+    jupyter_plaintext_password: jupytersecret
+    jupyter_daemon_enable: yes
 
-- name: Install jupyter 
-  become: yes
-  pip:
-   name: ['jupyter']
-   state: present 
+#- name: Install jupyter 
+#  become: yes
+#  pip:
+#   name: ['jupyter']
+#  state: present 
    
-- name: Install jupyter core
-  become: yes
-  pip:
-   name: ['jupyter-core']
-   state: present 
+#- name: Install jupyter core
+#  become: yes
+#  pip:
+#   name: ['jupyter-core']
+#   state: present 
   
 #- name: Generate jupyter config
  # become: true
@@ -108,7 +108,12 @@
   shell: jupyter notebook --allow-root 
   async: 145
   poll: 5
+  register: jupy_out
   
+- name: Get jupyter out
+  become: true
+  debug:
+    msg: "{{ jupy_out.stdout_lines | join('\n') }}"
   # with_items:
  #  -
  
