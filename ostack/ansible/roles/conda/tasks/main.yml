@@ -66,9 +66,7 @@
       shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /opt/miniconda3
     - name: Add conda config to bashrc
       become: yes
-      blockinfile:
-        path: /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
-        block: "{{ lookup('file', 'bashrc_part') }}"
+      shell: echo ' 127.0.0.1 "{{lookup('env','name')}}" ' >> /etc/hosts
     #- name: run conda init
     #  become: true  
     #  shell: sudo echo ". /opt/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc ; sudo echo "conda activate" >> ~/.bashrc
