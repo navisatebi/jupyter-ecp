@@ -14,7 +14,7 @@
   src: git+https://github.com/YuriyGuts/ansible-role-jupyter.git
   version: master
 
-- name: ansible-pip
+- name: geerlingguy.pip
   scm: git
-  src: git+https://github.com/azavea/ansible-pip.git
+  src: https://github.com/geerlingguy/ansible-role-pip.git
   version: master
