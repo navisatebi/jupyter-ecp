@@ -51,8 +51,8 @@ ansible-galaxy install -r requirements.yml
 export ANSIBLE_REMOTE_USER="${TF_VAR_remote_user:-ubuntu}"
 echo "export ANSIBLE_REMOTE_USER=${ANSIBLE_REMOTE_USER}"
 
-export TF_VAR_name="${TF_VAR_name}-1"
-echo "export TF_VAR_name=${TF_VAR_name}-1"
+export TF_VAR_name="${TF_VAR_name}"
+echo "export TF_VAR_name=${TF_VAR_name}"
 
 # Launch Ansible playbook
 echo -e "\n\t${CYAN}Launch Ansible playbook${NC}\n"
