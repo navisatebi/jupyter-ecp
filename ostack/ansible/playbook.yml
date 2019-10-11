@@ -36,6 +36,7 @@
       jupyter_port: 8888
       jupyter_plaintext_password: jupytersecret
       jupyter_daemon_enable: yes
+      jupyter_package_manager_become: yes
     - jupyter  
 
   tasks:
