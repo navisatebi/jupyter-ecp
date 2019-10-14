@@ -93,19 +93,19 @@
 #  become: yes
 #  shell: jupyter notebook --generate-config 
   
-- name: Start notebook
-  become: yes
-  shell: jupyter notebook --allow-root --notebook-dir=/opt/bioexcel
-  register: jupy_out
+#- name: Start notebook
+#  become: yes
+#  shell: jupyter notebook --allow-root --notebook-dir=/opt/bioexcel
+#  register: jupy_out
   #command: {{ item}}
   #with_items:
   #bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb
   #jupyter notebook --allow-root 
   
-- name: Get jupyter out
-  become: true
-  debug:
-    msg: "{{ jupy_out.stdout_lines | join('\n') }}"
+#- name: Get jupyter out
+#  become: true
+#  debug:
+#    msg: "{{ jupy_out.stdout_lines | join('\n') }}"
   # with_items:
  #  -
  
