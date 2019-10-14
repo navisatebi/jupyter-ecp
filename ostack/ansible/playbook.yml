@@ -30,8 +30,7 @@
     - evandam.conda
     - conda-packages
     - geerlingguy.pip
-    - jupyter
-    - role: yuriyguts.jupyter
+    - role: jupyter
       jupyter_ip: '0.0.0.0'
       jupyter_port: 8888
       jupyter_plaintext_password: jupytersecret
