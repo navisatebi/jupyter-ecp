@@ -95,7 +95,7 @@
   
 - name: Start notebook
   become: yes
-  command: conda activate biobb && jupyter notebook --allow-root 
+  command: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb && jupyter notebook --allow-root 
   #async: 145
   #poll: 5
   register: jupy_out
