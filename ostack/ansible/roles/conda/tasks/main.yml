@@ -87,14 +87,14 @@
       shell: conda config --add channels defaults; conda config --add channels bioconda;conda config --add channels conda-forge
      
    
-    #- name: add universe repository for bionic
-    #  become: yes
-    #  apt_repository: 
-    #   repo: deb http://archive.ubuntu.com/ubuntu bionic universe
-    #   state: present
+    - name: add universe repository for bionic
+      become: yes
+      apt_repository: 
+       repo: deb http://archive.ubuntu.com/ubuntu bionic universe
+       state: present
     
-    #- name: Install dependencies for jupyter
-    #  become: yes 
-    #  apt:
-    #   name: ['python3-pip']
-    #   state: present
+    - name: Install dependencies for jupyter
+      become: yes 
+      apt:
+       name: ['python3-pip']
+       state: present
