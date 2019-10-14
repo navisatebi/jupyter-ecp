@@ -31,11 +31,9 @@
     - conda-packages
     - geerlingguy.pip
     - role: yuriyguts.jupyter
-      jupyter_ip: localhost
+      jupyter_ip: '0.0.0.0'
       jupyter_port: 8888
       jupyter_plaintext_password: jupytersecret
-      jupyter_daemon_enable: yes
-      jupyter_package_manager_become: yes
     - jupyter  
 
   tasks:
