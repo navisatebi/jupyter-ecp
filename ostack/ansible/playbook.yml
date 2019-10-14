@@ -36,6 +36,8 @@
       jupyter_port: 8888
       jupyter_plaintext_password: jupytersecret
       jupyter_daemon_document_root: /opt/bioexcel
+      jupyter_package_manager_become: yes
+      jupyter_daemon_enable: yes
 
   tasks:
     - name: Make sure the user key is authorized on the nfs-server instance
