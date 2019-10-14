@@ -95,7 +95,7 @@
   
 - name: Start notebook
   become: yes
-  shell: jupyter notebook --allow-root 
+  command: conda activate biobb && jupyter notebook --allow-root 
   #async: 145
   #poll: 5
   register: jupy_out
