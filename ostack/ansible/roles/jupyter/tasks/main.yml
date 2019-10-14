@@ -95,7 +95,7 @@
   
 - name: Start notebook
   become: yes
-  shell: jupyter notebook --allow-root 
+  shell: jupyter notebook --allow-root --notebook-dir=/opt/bioexcel
   register: jupy_out
   #command: {{ item}}
   #with_items:
