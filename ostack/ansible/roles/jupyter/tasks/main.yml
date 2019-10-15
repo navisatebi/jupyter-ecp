@@ -95,7 +95,6 @@
 
 - name: Enable Jupyter daemon
   become: yes
-  become_user: "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   shell: |
      systemctl enable jupyter.service
      systemctl daemon-reload
