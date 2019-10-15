@@ -37,8 +37,7 @@
       jupyter_daemon_document_root: /opt/bioexcel
       jupyter_package_manager_become: yes
       jupyter_daemon_enable: yes
-      jupyter_daemon_user: "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
-      jupyter_daemon_group: "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
+      jupyter_config_filename: /root/.jupyter/jupyter_notebook_config.py
       machine_name:  "{{lookup('env','TF_VAR_name')}}"
 
   tasks:
