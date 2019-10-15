@@ -11,7 +11,7 @@ jupyter_package_manager_become: no
 
 # Desired state for Jupyter-related Python packages.
 # You might want to use 'present' instead of 'latest'.
-jupyter_package_state: latest
+jupyter_package_state: present
 
 # The port Jupyter server will be listening on.
 jupyter_port: 8888
