@@ -37,8 +37,8 @@
   become: yes
   pip:
     name: 'jupyter'
-    state: latest
-    executable: python
+    state: '{{ jupyter_package_state }}'
+    executable: '{{ jupyter_package_manager }}'
     
 - name: Generate Jupyter password
   when: jupyter_plaintext_password != ''
