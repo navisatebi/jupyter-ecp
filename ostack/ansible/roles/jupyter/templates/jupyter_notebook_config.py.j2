@@ -6,3 +6,5 @@ c.NotebookApp.tornado_settings = { 'headers': {
         'Content-Security-Policy':  "default-src https: 'unsafe-inline'; connect-src https: wss:"
     }
 }
+c.NotebookApp.certFile = '{{jupyter_certfile}}'
+c.NotebookApp.keyfile = '{{jupyter_keyfile}}'
