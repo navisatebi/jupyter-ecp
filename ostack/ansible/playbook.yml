@@ -39,6 +39,8 @@
       jupyter_daemon_enable: yes
       jupyter_config_filename: /home/ubuntu/.jupyter/jupyter_notebook_config.py
       machine_name:  "{{lookup('env','TF_VAR_name')}}"
+      jupyter_certfile: /opt/openssl/mycert.pem
+      jupyter_keyfile: /opt/openssl/mykey.key
 
   tasks:
     - name: Make sure the user key is authorized on the nfs-server instance
