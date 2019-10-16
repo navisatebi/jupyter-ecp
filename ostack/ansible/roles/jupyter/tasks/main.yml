@@ -33,12 +33,53 @@
     path: /opt/openssl/mykey.key
     mode: '0600'
     
-- name: Install Python packages
+- name: Install openstack client package
   become: yes
   pip:
-    name: 'jupyter'
+    name: 'python-openstackclient'
+    state: present
+    executable: '{{ jupyter_package_manager }}'   
+    
+- name: Install Python packages
+  become: '{{ jupyter_package_manager_become }}'
+  pip:
+    name: '{{ item }}'
     state: '{{ jupyter_package_state }}'
     executable: '{{ jupyter_package_manager }}'
+  with_items:
+    - ipython
+    - ipykernel
+    - jupyter
+
+- name: Check if the IPython profile already exists
+  stat:
+    path: '{{ ipython_config_filename }}'
+  register: ipython_config_exists
+
+- name: Create IPython profile
+  when: not ipython_config_exists.stat.exists
+  command: ipython profile create
+  register: ipython_profile_create_output
+  args:
+    creates:
+      - '{{ ipython_config_filename }}'
+      - '{{ ipython_kernel_config_filename }}'
+
+- name: Apply IPython configs
+  block:
+    - name: IPython main config
+      template:
+        src: ipython_config.py.j2
+        dest: '{{ ipython_config_filename }}'
+        force: yes
+        mode: 0644
+
+    - name: IPython kernel config
+      template:
+        src: ipython_kernel_config.py.j2
+        dest: '{{ ipython_kernel_config_filename }}'
+        force: yes
+        mode: 0644
     
 - name: Generate Jupyter password
   when: jupyter_plaintext_password != ''
@@ -91,15 +132,17 @@
   template:
      src: jupyter.service.j2
      dest: '{{ jupyter_daemon_systemd_filename }}'
-     force: yes
+     force: yes     
 
 - name: Enable Jupyter daemon
   become: yes
   shell: |
+     source activate biobb
      systemctl enable jupyter.service
      systemctl daemon-reload
      systemctl restart jupyter.service
-    
+     
+   
 #- name: Install jupyter
 #  become: true  
 #  roles:
