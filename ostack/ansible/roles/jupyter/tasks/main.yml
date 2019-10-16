@@ -137,7 +137,7 @@
 - name: Enable Jupyter daemon
   become: yes
   shell: |
-     source activate biobb
+     conda activate biobb
      systemctl enable jupyter.service
      systemctl daemon-reload
      systemctl restart jupyter.service
