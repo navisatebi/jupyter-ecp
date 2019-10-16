@@ -139,9 +139,9 @@
   command: "{{item}}"
   with_items:
      bash /home/ubuntu/.bashrc && conda activate biobb
-     bash /home/ubuntu/.bashrc &&systemctl enable jupyter.service
-     bash /home/ubuntu/.bashrc && systemctl daemon-reload
-     bash /home/ubuntu/.bashrc && systemctl restart jupyter.service
+     systemctl enable jupyter.service
+     systemctl daemon-reload
+     systemctl restart jupyter.service
      
    
 #- name: Install jupyter
