@@ -1,11 +1,4 @@
-   
-#- name: Create a conda environment
-#  become: true
-#  conda:
-#    name: python
-#    environment: biobb
-#    state: present
-   
+
 - name: Install some packages in the environment
   conda:
      environment: biobb
@@ -16,18 +9,7 @@
          - biobb_md=0.1.5
          - nglview=1.2.0
          - simpletraj
-         - pocl     
-#- name: 
-#  become: true
-#  command: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
-  
-#- name: Install some packages in the environment
-#  become: true
-#  shell: conda activate biobb; conda install biobb_common==0.1.4; conda install biobb_io==0.1.4;biobb_model==0.1.8; 
-
-#- name: Install some packages in the environment
-#  become: true
-#  shell: conda activate biobb; conda install biobb_md==0.1.5; conda install nglview=1.2.0; conda install simpletraj; conda install pocl;
+         - pocl    
   
 - name: Soft link for OpenCL
   become: yes
