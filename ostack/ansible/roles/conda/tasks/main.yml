@@ -61,9 +61,9 @@
     - name: Create symbolic link
       become: yes
       shell: ln -s  /opt/miniconda3/bin/conda /usr/bin/conda
-    - name: Change permisssions for /opt/miniconda3 for ansible   user
-      become: yes
-      shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /opt/miniconda3
+    #- name: Change permisssions for /opt/miniconda3 for ansible   user
+    #  become: yes
+    #  shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /opt/miniconda3
     - name: Add conda config to bashrc
       become: yes
       shell: echo ' 127.0.0.1 {{lookup('env','TF_VAR_name')}} ' >> /etc/hosts
