@@ -104,7 +104,6 @@
   become: yes
   command: "{{item}}"
   with_items:
-  - jupyter-nbextension enable nglview --py --sys-prefix
   - bash -i /home/ubuntu/.bashrc && conda activate biobb
   - systemctl enable jupyter.service
   - systemctl daemon-reload
