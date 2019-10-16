@@ -34,8 +34,12 @@
   pip:
     name: 'python-openstackclient'
     state: present
-    executable: '{{ jupyter_package_manager }}'   
+    executable: '{{ jupyter_package_manager }}'  
     
+- name: Add security group to server
+  become: yes
+  shell: openstack server add security group "{{lookup('env','instance_public_ip')}}" 'for-jupyter'
+
 - name: Install Python packages
   become: '{{ jupyter_package_manager_become }}'
   pip:
