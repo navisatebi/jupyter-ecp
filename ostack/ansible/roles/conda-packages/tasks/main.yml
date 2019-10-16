@@ -11,10 +11,6 @@
          - simpletraj
          - pocl    
          
-- name: Enable nglview
-  become: yes
-  shell: jupyter-nbextension enable nglview --py --sys-prefix
-  
 - name: Soft link for OpenCL
   become: yes
   shell: sudo ln -s /etc/OpenCL/vendors /opt/miniconda3/envs/biobb/etc/OpenCL/vendors
