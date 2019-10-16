@@ -24,15 +24,6 @@
       file:
         state: absent
         path: /tmp/install-miniconda.sh
-    #- name: Add miniconda bin to path 1
-    #  become: True
-    #  shell: "export PATH=/opt/miniconda3/bin:$PATH"
-    #- name: Add miniconda bin to path 2
-    #  become: True
-    #  shell: echo 'export PATH=/opt/miniconda3/bin:$PATH' >> ~/.bashrc
-    #- name: Add miniconda bin to path 3
-    #  become: True
-    #  shell: echo 'export PATH=/opt/miniconda3/bin:$PATH' >> /etc/profile
     - name: conda - read permission for all
       become: yes
       file:
@@ -50,42 +41,22 @@
       file:
        path: /opt/miniconda3/etc
        mode: +rwx
-       recurse: yes      
-    #- name: tell the host about our servers it might want to ssh to
-    #  known_hosts:
-    #  path:  /etc/ssh/ssh_known_hosts
-    #  name: {{}}
-    #key: "{{ lookup('file', 'pubkeys/foo.com.invalid') }}"      
-   # - name: Kill own ssh connections
-   #   ssh-reconnect: user="{{lookup('env','ANSIBLE_REMOTE_USER')}}"
+       recurse: yes    
     - name: Create symbolic link
       become: yes
       shell: ln -s  /opt/miniconda3/bin/conda /usr/bin/conda
-    #- name: Change permisssions for /opt/miniconda3 for ansible   user
-    #  become: yes
-    #  shell: sudo chown -R {{lookup('env','ANSIBLE_REMOTE_USER')}}:{{lookup('env','ANSIBLE_REMOTE_USER')}} /opt/miniconda3
+   
     - name: Add conda config to bashrc
       become: yes
       shell: echo ' 127.0.0.1 {{lookup('env','TF_VAR_name')}} ' >> /etc/hosts
-    #- name: run conda init
-    #  become: true  
-    #  shell: sudo echo ". /opt/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc ; sudo echo "conda activate" >> ~/.bashrc
-    #- name: bash - execution permission for all
-    #  become: True
-    #  file: 
-    #    path: /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/bin/bash
-    #    mode: +x
+      
     - name: Source .bashrc
-      #shell: . /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
-      #shell: eval \"$\(cat /home/ubuntu/.bashrc \| tail \-n \+10 \)\"
       become: yes
       command: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
-     # shell: sudo -iu {{lookup('env','ANSIBLE_REMOTE_USER')}} && conda init && conda activate biobb
-     # become: true
+      
     - name: Conda add channels
       become: yes
       shell: conda config --add channels defaults; conda config --add channels bioconda;conda config --add channels conda-forge
-     
    
     - name: add universe repository for bionic
       become: yes
