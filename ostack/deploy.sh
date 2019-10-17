@@ -41,9 +41,32 @@ external_ip=$(terraform output -state=${DPL}'terraform.tfstate' external_ip)
 export external_ip=${external_ip}
 echo "export external_ip=${external_ip}"
 
+
+
+#    OS_NETWORK  OS_PROJECT_ID OS_REGION_ONE  OS_USER_DOMAIN_NAME
+
 # Set default value for Ansible variables if they are either empty or undefined
 
 cd ostack/ansible 
+
+# Export openstack variables
+export auth_url="${OS_AUTH_URL}"
+echo "export auth_url=${OS_AUTH_URL}"
+
+export os_username="${OS_USERNAME}"
+echo "export os_username=${OS_USERNAME}"
+
+export os_password="${OS_PASSWORD}"
+echo "export os_password=${OS_PASSWORD}"
+
+export os_project_name="${OS_PROJECT_NAME}"
+echo "export os_project_name=${OS_PROJECT_NAME}"
+
+export os_interface="${OS_INTERFACE}"
+echo "export os_interface=${OS_INTERFACE}"
+
+export os_identity_api_version="${OS_IDENTITY_API_VERSION}"
+echo "export os_identity_api_version=${OS_IDENTITY_API_VERSION}"
 
 echo "Installing ssh-reconnect, evandam.conda"
 ansible-galaxy install -r requirements.yml 
