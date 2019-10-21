@@ -35,10 +35,18 @@
     name: 'python-openstackclient'
     state: present
     executable: '{{ jupyter_package_manager }}'  
-    
+
+- name: Export openstack varibales
+  become: yes
+  shell: |
+  export OS_USERNAME={{lookup('env','OS_USERNAME')}}
+  export OS_PASSWORD={{lookup('env','OS_PASSWORD')}}
+  export OS_PROJECT_NAME={{lookup('env','OS_PROJECT_NAME')}}
+  export OS_AUTH_URL={{lookup('env','OS_AUTH_URL')}}
+  
 - name: Add security group to server
   become: yes
-  shell: openstack server add security group "{{lookup('env','instance_public_ip')}}" 'for-jupyter' --auth-url={{lookup('env','auth_url')}} 
+  shell: openstack server add security group "{{lookup('env','instance_public_ip')}}" 'for-jupyter' 
 
 - name: Install Python packages
   become: '{{ jupyter_package_manager_become }}'
