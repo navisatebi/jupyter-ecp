@@ -37,9 +37,10 @@
     executable: '{{ jupyter_package_manager }}'  
 
 - name: Insert/Update configuration openstack
-  blockinfile:
-    block: "{{ lookup('file', 'openrc.txt') }}"
-    dest: /home/ubuntu/.bashrc
+  become: yes
+  shell: |
+  
+
   
 - name: Source .bashrc
   become: yes
