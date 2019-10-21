@@ -51,22 +51,22 @@ cd ostack/ansible
 
 # Export openstack variables
 export auth_url="${OS_AUTH_URL}"
-echo "export auth_url=${OS_AUTH_URL}"
+echo "export OS_AUTH_URL=${OS_AUTH_URL}"
 
 export os_username="${OS_USERNAME}"
-echo "export os_username=${OS_USERNAME}"
+echo "export OS_USERNAME=${OS_USERNAME}"
 
 export os_password="${OS_PASSWORD}"
-echo "export os_password=${OS_PASSWORD}"
+echo "export OS_PASSWORD=${OS_PASSWORD}"
 
 export os_project_name="${OS_PROJECT_NAME}"
-echo "export os_project_name=${OS_PROJECT_NAME}"
+echo "export OS_PROJECT_NAME=${OS_PROJECT_NAME}"
 
 export os_interface="${OS_INTERFACE}"
-echo "export os_interface=${OS_INTERFACE}"
+echo "export OS_INTERFACE=${OS_INTERFACE}"
 
 export os_identity_api_version="${OS_IDENTITY_API_VERSION}"
-echo "export os_identity_api_version=${OS_IDENTITY_API_VERSION}"
+echo "export OS_IDENTITY_API_VERSION=${OS_IDENTITY_API_VERSION}"
 
 echo "Installing ssh-reconnect, evandam.conda"
 ansible-galaxy install -r requirements.yml 
