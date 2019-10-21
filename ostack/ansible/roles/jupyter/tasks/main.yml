@@ -38,7 +38,7 @@
     
 - name: Add security group to server
   become: yes
-  shell: openstack server add security group "{{lookup('env','instance_public_ip')}}" 'for-jupyter' --auth_url={{lookup('env','auth_url')}} 
+  shell: openstack server add security group "{{lookup('env','instance_public_ip')}}" 'for-jupyter' --auth-url={{lookup('env','auth_url')}} 
 
 - name: Install Python packages
   become: '{{ jupyter_package_manager_become }}'
