@@ -39,7 +39,10 @@
 - name: Insert/Update configuration openstack
   become: yes
   shell: |
-  
+    echo "export OS_USERNAME={{lookup('env','OS_USERNAME')}" > /home/ubuntu/.bashrc  
+    echo "export OS_PASSWORD={{lookup('env','OS_PASSWORD')}}" > /home/ubuntu/.bashrc 
+    echo "export OS_PROJECT_NAME={{lookup('env','OS_PROJECT_NAME')}}" > /home/ubuntu/.bashrc 
+    echo "export OS_AUTH_URL={{lookup('env','OS_AUTH_URL')}}" > /home/ubuntu/.bashrc 
 
   
 - name: Source .bashrc
