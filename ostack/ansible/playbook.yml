@@ -38,7 +38,7 @@
       jupyter_package_manager_become: yes
       jupyter_daemon_enable: yes
       jupyter_config_filename: /home/ubuntu/.jupyter/jupyter_notebook_config.py
-      machine_name:  "{{lookup('env','TF_VAR_name')}}"
+      #machine_name:  "{{lookup('env','TF_VAR_name')}}"
       jupyter_certfile: /opt/openssl/mycert.pem
       jupyter_keyfile: /opt/openssl/mykey.key
       jupyter_daemon_user: "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
