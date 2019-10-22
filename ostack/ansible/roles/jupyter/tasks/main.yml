@@ -51,7 +51,8 @@
   
 - name: Add security group to server
   become: yes
-  shell: openstack server add security group "{{lookup('env','external_ip')}}" 'for-jupyter' 
+  shell: ufw allow 8888
+  #openstack server add security group "{{lookup('env','external_ip')}}" 'for-jupyter' 
 
 - name: Install Python packages
   become: '{{ jupyter_package_manager_become }}'
