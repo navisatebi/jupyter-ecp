@@ -15,10 +15,11 @@
 
 - name: Generate OpenSSL key and certificate
   become: yes
-  shell: openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /opt/openssl/mycert.pem -out /opt/openssl/mycert.pem -subj "/C=GB/ST=Cambridge/L=Cambridge/O=Global Security/OU=IT Department/CN=ebi.ac.uk/EA=navis@ebi.ac.uk"
+  shell: openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout {{jupyter_keyfile}} -out {{jupyter_certfile}} -subj "/C=GB/ST=Cambridge/L=Cambridge/O=Global Security/OU=IT Department/CN=ebi.ac.uk/EA=navis@ebi.ac.uk"
 
 - name: openssl - permission for certfile
   become: yes
+  become_user: {{lookup('env','ANSIBLE_REMOTE_USER')}}
   file:
    path: /opt/openssl/mycert.pem
    mode: '0644'
@@ -26,8 +27,8 @@
 #- name: openssl - permission for keyfile
 #  become: yes
 #  file:
- #   path: /opt/openssl/mykey.key
-#    mode: '0600'
+#   path: /opt/openssl/mykey.key
+#   mode: '0600'
     
 #- name: Install openstack client package
 #  become: yes
