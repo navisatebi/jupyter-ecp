@@ -4,8 +4,7 @@ Description=Jupyter Notebook
 [Service]
 Type=simple
 PIDFile={{ jupyter_daemon_pidfile }}
-ExecStart={{ jupyter_daemon_executable }} --config={{ jupyter_config_filename }} --certfile={{jupyter_certfile}} --keyfile {{jupyter_keyfile}}
-User={{ jupyter_daemon_user }}
+ExecStart={{ jupyter_daemon_executable }} --config={{ jupyter_config_filename }}
 Group={{ jupyter_daemon_group }}
 WorkingDirectory={{ jupyter_daemon_document_root }}
 Restart=always
