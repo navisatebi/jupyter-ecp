@@ -24,11 +24,11 @@
    path: {{jupyter_certfile}}
    mode: '0644'
  
-#- name: openssl - permission for keyfile
-#  become: yes
-#  file:
-#   path: /opt/openssl/mykey.key
-#   mode: '0600'
+- name: openssl - permission for keyfile
+  become: yes
+  file:
+   path: {{jupyter_keyfile}}
+   mode: '0600'
     
 #- name: Install openstack client package
 #  become: yes
