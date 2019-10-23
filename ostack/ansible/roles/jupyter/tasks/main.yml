@@ -21,7 +21,7 @@
   become: yes
   become_user: "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   file:
-   path: /opt/openssl/mycert.pem
+   path: {{jupyter_certfile}}
    mode: '0644'
  
 #- name: openssl - permission for keyfile
