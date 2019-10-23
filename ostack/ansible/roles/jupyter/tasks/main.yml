@@ -15,7 +15,7 @@
 
 - name: Generate OpenSSL key and certificate
   become: yes
-  shell: openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /opt/openssl/mykey.key -out /opt/openssl/mycert.pem -subj "/C=GB/ST=Cambridge/L=Cambridge/O=Global Security/OU=IT Department/CN=ebi.ac.uk/EA=navis@ebi.ac.uk"
+  shell: openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /opt/openssl/mycert.pem -out /opt/openssl/mycert.pem -subj "/C=GB/ST=Cambridge/L=Cambridge/O=Global Security/OU=IT Department/CN=ebi.ac.uk/EA=navis@ebi.ac.uk"
 
 - name: openssl - permission for certfile
   become: yes
