@@ -6,28 +6,28 @@
       repo=https://github.com/bioexcel/biobb_workflows.git
       dest=/opt/bioexcel
       
-- name: Create openssl directory
-  become: yes
-  file:
-    path: /opt/openssl
-    state: directory
-    mode: '0755'
+#- name: Create openssl directory
+#  become: yes
+#  file:
+#    path: /opt/openssl
+#    state: directory
+#    mode: '0755'
 
 - name: Generate OpenSSL key and certificate
   become: yes
   shell: openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem -subj "/C=GB/ST=Cambridge/L=Cambridge/O=Global Security/OU=IT Department/CN=ebi.ac.uk/EA=navis@ebi.ac.uk"
 
-- name: openssl - permission for certfile
-  become: yes
-  file:
-    path: /opt/openssl/mycert.pem
-    mode: '0644'
+#- name: openssl - permission for certfile
+#  become: yes
+#  file:
+#    path: /opt/openssl/mycert.pem
+#    mode: '0644'
  
-- name: openssl - permission for keyfile
-  become: yes
-  file:
-    path: /opt/openssl/mykey.key
-    mode: '0600'
+#- name: openssl - permission for keyfile
+#  become: yes
+#  file:
+#    path: /opt/openssl/mykey.key
+#    mode: '0600'
     
 #- name: Install openstack client package
 #  become: yes
