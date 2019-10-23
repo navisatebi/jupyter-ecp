@@ -26,8 +26,8 @@
 - name: openssl - permission for keyfile
   become: yes
   file:
-  path: /opt/openssl/mykey.key
-  mode: '0600'
+    path: /opt/openssl/mykey.key
+    mode: '0600'
     
 #- name: Install openstack client package
 #  become: yes
