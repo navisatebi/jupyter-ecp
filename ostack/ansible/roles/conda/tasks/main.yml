@@ -1,8 +1,5 @@
 - name: Install Conda
   block:
-    - name: test
-      become: true
-      shell: echo {{lookup('env','auth_url')}} 
     - name: Download Miniconda
       get_url:
         url: https://repo.continuum.io/miniconda/Miniconda3-4.7.12-Linux-x86_64.sh
