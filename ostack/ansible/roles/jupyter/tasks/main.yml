@@ -21,13 +21,13 @@
   become: yes
   file:
    path: "{{jupyter_certfile}}"
-   mode: '0644'
+   mode: '0777'
  
 - name: openssl - permission for keyfile
   become: yes
   file:
    path: "{{jupyter_keyfile}}"
-   mode: '0600'
+   mode: '0777'
     
 #- name: Install openstack client package
 #  become: yes
