@@ -19,7 +19,7 @@
 
 - name: openssl - permission for certfile
   become: yes
-  become_user: {{lookup('env','ANSIBLE_REMOTE_USER')}}
+  become_user: "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   file:
    path: /opt/openssl/mycert.pem
    mode: '0644'
