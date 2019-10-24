@@ -23,8 +23,8 @@ resource "openstack_compute_secgroup_v2" "allow-ssh" {
 }
 
 resource "openstack_compute_secgroup_v2" "allow-https" {
-  name        = "${var.name}-allow-ssh"
-  description = "Allow SSH traffic"
+  name        = "${var.name}-allow-https"
+  description = "Allow HTTPS traffic"
 
   rule {
     ip_protocol = "tcp"
