@@ -1,16 +1,29 @@
 
-- name: Install some packages in the environment
-  conda:
-     environment: biobb
-     name:
-         - biobb_common=0.1.4
-         - biobb_io=0.1.4
-         - biobb_model=0.1.8
-         - biobb_md=0.1.5
-         - nglview=1.2.0
-         - simpletraj
-         - pocl    
+#- name: Install some packages in the environment
+#  conda:
+ #    environment: biobb
+  #   name:
+   #      - biobb_common=0.1.4
+    #     - biobb_io=0.1.4
+     #   - biobb_model=0.1.8
+      #   - biobb_md=0.1.5
+       #  - nglview=1.2.0
+        # - simpletraj
+         #- pocl    
          
+- name: Install some packages in the environment
+  become: yes
+  command: "{{item}}"
+  with_items:
+  - bash -i /home/ubuntu/.bashrc && conda activate biobb
+  - conda install biobb_common=0.1.4
+  - conda install biobb_io=0.1.4
+  - conda install biobb_model=0.1.8
+  - conda install biobb_md=0.1.5
+  - conda install nglview=1.2.0
+  - conda install simpletraj
+  - conda install pocl
+  
 - name: Soft link for OpenCL
   become: yes
   shell: sudo ln -s /etc/OpenCL/vendors /opt/miniconda3/envs/biobb/etc/OpenCL/vendors
