@@ -14,6 +14,7 @@ resource "openstack_compute_instance_v2" "instance" {
   security_groups = [
     "${openstack_compute_secgroup_v2.allow-icmp.name}",
     "${openstack_compute_secgroup_v2.allow-ssh.name}",
+    "${openstack_compute_secgroup_v2.allow-https.name}"
   ]
 }
 
