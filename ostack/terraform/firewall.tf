@@ -21,3 +21,15 @@ resource "openstack_compute_secgroup_v2" "allow-ssh" {
     cidr        = "0.0.0.0/0"
   }
 }
+
+resource "openstack_compute_secgroup_v2" "allow-https" {
+  name        = "${var.name}-allow-ssh"
+  description = "Allow SSH traffic"
+
+  rule {
+    ip_protocol = "tcp"
+    from_port   = 443
+    to_port     = 443
+    cidr        = "0.0.0.0/0"
+  }
+}
