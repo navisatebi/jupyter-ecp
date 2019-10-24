@@ -3,11 +3,11 @@
   conda:
      environment: biobb
      name:
-         - biobb_common=0.1.4
-         - biobb_io=0.1.4
-         - biobb_model=0.1.8
-         - biobb_md=0.1.5
-         - nglview=1.2.0
+         - biobb_common
+         - biobb_io
+         - biobb_model
+         - biobb_md
+         - nglview
          - simpletraj
          - pocl    
          
