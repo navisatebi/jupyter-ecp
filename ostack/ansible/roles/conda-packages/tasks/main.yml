@@ -9,13 +9,16 @@
       #   - biobb_md=0.1.5
        #  - nglview=1.2.0
         # - simpletraj
-         #- pocl    
+#- pocl
+
+- name: Create biobb environment
+  become: yes
+  command: bash -i /home/ubuntu/.bashrc && conda create --name biobb
          
 - name: Install some packages in the environment
   become: yes
   command: "{{item}}"
   with_items:
-  - bash -i /home/ubuntu/.bashrc && conda create --name biobb
   - bash -i /home/ubuntu/.bashrc && conda activate biobb
   - conda install biobb_common=0.1.4
   - conda install biobb_io=0.1.4
