@@ -15,6 +15,7 @@
   become: yes
   command: "{{item}}"
   with_items:
+  - bash -i /home/ubuntu/.bashrc && conda create --name biobb
   - bash -i /home/ubuntu/.bashrc && conda activate biobb
   - conda install biobb_common=0.1.4
   - conda install biobb_io=0.1.4
