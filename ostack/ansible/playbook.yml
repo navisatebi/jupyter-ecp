@@ -32,7 +32,7 @@
     - geerlingguy.pip
     - role: jupyter
       jupyter_ip: '0.0.0.0'
-      jupyter_port: 8888
+      jupyter_port: 443
       jupyter_plaintext_password: jupytersecret
       jupyter_daemon_document_root: /opt/bioexcel
       jupyter_package_manager_become: yes
