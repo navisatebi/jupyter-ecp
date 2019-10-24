@@ -1,12 +1,15 @@
 - name: Install Conda
   block:
+    - name: - name: Update and upgrade apt packages
+      become: true
+      apt:
+       upgrade: yes
+       update_cache: yes
     - name: Download Miniconda
       get_url:
         url: https://repo.continuum.io/miniconda/Miniconda3-4.7.12-Linux-x86_64.sh
-        #Miniconda3-latest-Linux-x86_64.sh
         dest: /tmp/install-miniconda.sh
         checksum: md5:0dba759b8ecfc8948f626fa18785e3d8
-        #md5:1c945f2b3335c7b2b15130b1b2dc5cf4
         mode: 0550
     - name: Create conda folder
       become: yes
@@ -60,14 +63,19 @@
       become: yes
       shell: conda config --add channels defaults; conda config --add channels bioconda;conda config --add channels conda-forge
    
-    - name: add universe repository for python pip
+    - name: Conda install python
       become: yes
-      apt_repository: 
-        repo: deb http://archive.ubuntu.com/ubuntu bionic universe
-        state: present
+      shell: conda install python=3.6
+      
+    #- name: add universe repository for python pip
+    #  become: yes
+    #  apt_repository: 
+    #    repo: deb http://archive.ubuntu.com/ubuntu bionic universe
+    #    state: present
     
     - name: Install pip 
       become: yes 
       apt:
-        name: ['python3-pip']
+        name: ['python-pip']
         state: present
+        
