@@ -29,18 +29,18 @@
    path: "{{jupyter_keyfile}}"
    mode: '0777'
     
-- name: Install Jupyter
-  become: '{{ jupyter_package_manager_become }}'
-  pip:
-    name: 'jupyter'
-    state: '{{ jupyter_package_state }}'
-    executable: '{{ jupyter_package_manager }}' 
+#- name: Install Jupyter
+#  become: '{{ jupyter_package_manager_become }}'
+#  pip:
+ #   name: 'jupyter'
+ #   state: '{{ jupyter_package_state }}'
+ #   executable: '{{ jupyter_package_manager }}' 
   
 - name: Generate Jupyter password
   when: jupyter_plaintext_password != ''
   block:
     - name: Acquire Jupyter password hash
-      command: 'python -c "from notebook.auth import passwd; print(passwd(''{{ jupyter_plaintext_password }}''));"'
+      command: conda activate biobb && 'python -c "from notebook.auth import passwd; print(passwd(''{{ jupyter_plaintext_password }}''));"'
       register: jupyter_password_output
       no_log: yes
       changed_when: no
@@ -51,7 +51,7 @@
   changed_when: no
 
 - name: Create Jupyter profile
-  command: jupyter notebook --generate-config
+  command: conda activate biobb && jupyter notebook --generate-config
   become_user: "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
   args:
     creates: '{{ jupyter_config_filename }}'
@@ -91,8 +91,8 @@
      
 - name: Enable nglview
   become: yes
-  command: "{{item}}"
-  with_items:
+  command: conda activate biobb && jupyter-nbextension enable nglview --py --sys-prefix
+  #with_items:
     #- conda init bash &&  bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc 
     #- ln -s /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/miniconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh
     #- echo "conda activate biobb" >> ~/.bashrc
@@ -104,7 +104,6 @@
   become: yes
   command: "{{item}}"
   with_items:
-  - conda init bash &&  bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc 
   - conda activate biobb 
   - systemctl enable jupyter.service
   - systemctl daemon-reload
