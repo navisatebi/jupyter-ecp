@@ -94,11 +94,10 @@
   command: "{{item}}"
   with_items:
     #- conda init bash &&  bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc 
-    - ln -s /home/<user>/miniconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh
-    - echo "conda activate" >> ~/.bashrc
-    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc 
-    - conda activate biobb 
-    - jupyter-nbextension enable nglview --py --sys-prefix
+    #- ln -s /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/miniconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+    #- echo "conda activate biobb" >> ~/.bashrc
+    #- bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc 
+    #- jupyter-nbextension enable nglview --py --sys-prefix
   
   
 - name: Enable Jupyter daemon
