@@ -4,7 +4,7 @@
   become: yes
   shell: conda init bash && source /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
   
-  - name: Download bioexcel github  
+- name: Download bioexcel github  
   become: yes
   git: >
       repo=https://github.com/bioexcel/biobb_workflows.git
