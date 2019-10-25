@@ -95,9 +95,9 @@
 
 - name: Enable Jupyter daemon
   become: yes
-  command: "{{item}}"
+  shell: "{{item}}"
   with_items:
-  - bash -i /home/ubuntu/.bashrc && conda activate biobb
+  - conda activate biobb
   - systemctl enable jupyter.service
   - systemctl daemon-reload
   - systemctl restart jupyter.service
