@@ -1,9 +1,5 @@
 
----
-- name: Conda 
-  become: yes
-  shell: conda init bash && source /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
-  
+---  
 - name: Download bioexcel github  
   become: yes
   git: >
