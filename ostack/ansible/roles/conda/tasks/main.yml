@@ -1,5 +1,9 @@
 - name: Install Conda
   block:
+    - name: Make sure the user key is authorized on the nfs-server instance
+      become: yes
+      authorized_key: user="{{lookup('env','ANSIBLE_REMOTE_USER')}}" key="{{lookup('env','ssh_key')}}" exclusive=no state=present
+
     - name: Update and upgrade apt packages
       become: true
       apt:
