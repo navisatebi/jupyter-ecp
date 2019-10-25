@@ -20,8 +20,3 @@
 - name: Soft link for OpenCL
   become: yes
   shell: ln -s /etc/OpenCL/vendors /opt/miniconda3/envs/biobb/etc/OpenCL/vendors
-
-
-- name: Conda 
-  become: yes
-  shell: conda init bash && bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
