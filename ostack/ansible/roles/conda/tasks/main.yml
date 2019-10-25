@@ -4,11 +4,11 @@
       become: yes
       authorized_key: user="{{lookup('env','ANSIBLE_REMOTE_USER')}}" key="{{lookup('env','ssh_key')}}" exclusive=no state=present
 
-    - name: Update and upgrade apt packages
-      become: true
-      apt:
-       upgrade: yes
-       update_cache: yes
+   # - name: Update and upgrade apt packages
+   #   become: true
+    #  apt:
+    #   upgrade: yes
+    #   update_cache: yes
     - name: Download Miniconda
       get_url:
         url: https://repo.continuum.io/miniconda/Miniconda3-4.7.12-Linux-x86_64.sh
@@ -76,7 +76,3 @@
       apt:
         name: ['python3-pip']
         state: present
-        
-    - name: Conda 
-      become: yes
-      shell: conda init bash && . /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
