@@ -11,15 +11,19 @@
         # - simpletraj
 #- pocl
 
-- name: Create biobb environment
+- name: Activate conda bash
   become: yes
-  command: bash -i /home/ubuntu/.bashrc && conda create --name biobb
-         
+  shell: conda init bash
+
+- name: Close and reopen shell
+  become: yes
+  shell: exit
+ 
 - name: Install some packages in the environment
   become: yes
-  command: "{{item}}"
+  shell: "{{item}}"
   with_items:
-  - bash -i /home/ubuntu/.bashrc && conda activate biobb
+  - conda activate biobb
   - conda install biobb_common=0.1.4
   - conda install biobb_io=0.1.4
   - conda install biobb_model=0.1.8
@@ -28,6 +32,6 @@
   - conda install simpletraj
   - conda install pocl
   
-#- name: Soft link for OpenCL
-#  become: yes
-#  shell: sudo ln -s /etc/OpenCL/vendors /opt/miniconda3/envs/biobb/etc/OpenCL/vendors
+- name: Soft link for OpenCL
+  become: yes
+  shell: sudo ln -s /etc/OpenCL/vendors /opt/miniconda3/envs/biobb/etc/OpenCL/vendors
