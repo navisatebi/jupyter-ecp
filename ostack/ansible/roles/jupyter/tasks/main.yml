@@ -1,6 +1,10 @@
 
 ---
-- name: Download bioexcel github  
+- name: Conda 
+  become: yes
+  shell: conda init bash && source /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
+  
+  - name: Download bioexcel github  
   become: yes
   git: >
       repo=https://github.com/bioexcel/biobb_workflows.git
@@ -28,27 +32,13 @@
   file:
    path: "{{jupyter_keyfile}}"
    mode: '0777'
-  
-- name: Source .bashrc
-  become: yes
-  command: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc  
     
-- name: Install Python packages
+- name: Install Jupyter
   become: '{{ jupyter_package_manager_become }}'
   pip:
     name: 'jupyter'
     state: '{{ jupyter_package_state }}'
     executable: '{{ jupyter_package_manager }}' 
-    
-- name: Install jupyter extension
-  become: yes
-  pip:
-    name: 'jupyter_contrib_nbextensions'
-    state: present
-    
-- name: Copies the nbextensions’ javascript and css files into the jupyter server’s search directory
-  become: yes
-  shell: jupyter contrib nbextension install --user
   
 - name: Generate Jupyter password
   when: jupyter_plaintext_password != ''
@@ -105,9 +95,10 @@
 
 - name: Enable Jupyter daemon
   become: yes
-  command: "{{item}}"
+  shell: "{{item}}"
   with_items:
-  - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc  && conda activate biobb
+  - conda activate biobb 
+  - jupyter-nbextension enable nglview --py --sys-prefix
   - systemctl enable jupyter.service
   - systemctl daemon-reload
   - systemctl restart jupyter.service
