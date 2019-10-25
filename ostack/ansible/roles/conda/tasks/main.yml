@@ -76,3 +76,7 @@
       apt:
         name: ['python3-pip']
         state: present
+        
+    - name: Conda 
+      become: yes
+      shell: conda init bash && . /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
