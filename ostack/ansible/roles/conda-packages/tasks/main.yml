@@ -1,4 +1,10 @@
-
+- name: Create a conda environment
+  conda:
+    name: python
+    version: 3.6.9
+    environment: biobb
+    state: present
+        
 - name: Install some packages in the environment
   conda:
    environment: biobb
