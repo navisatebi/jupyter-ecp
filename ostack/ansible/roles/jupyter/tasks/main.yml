@@ -32,7 +32,7 @@
 - name: Source .bashrc
   become: yes
   command: bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc  
-  
+    
 - name: Install Python packages
   become: '{{ jupyter_package_manager_become }}'
   pip:
