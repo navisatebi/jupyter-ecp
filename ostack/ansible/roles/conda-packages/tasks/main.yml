@@ -28,6 +28,6 @@
   - conda install simpletraj
   - conda install pocl
   
-- name: Soft link for OpenCL
-  become: yes
-  shell: sudo ln -s /etc/OpenCL/vendors /opt/miniconda3/envs/biobb/etc/OpenCL/vendors
+#- name: Soft link for OpenCL
+#  become: yes
+#  shell: sudo ln -s /etc/OpenCL/vendors /opt/miniconda3/envs/biobb/etc/OpenCL/vendors
