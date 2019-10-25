@@ -103,7 +103,8 @@
   become: yes
   command: "{{item}}"
   with_items:
-  - conda activate biobb  
+  - conda init bash &&  bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc 
+  - conda activate biobb 
   - systemctl enable jupyter.service
   - systemctl daemon-reload
   - systemctl restart jupyter.service
