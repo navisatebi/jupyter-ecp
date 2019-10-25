@@ -93,8 +93,10 @@
   become: yes
   command: "{{item}}"
   with_items:
-    - conda init bash &&  bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc 
-    - sudo bash
+    #- conda init bash &&  bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc 
+    - ln -s /home/<user>/miniconda3/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+    - echo "conda activate" >> ~/.bashrc
+    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc 
     - conda activate biobb 
     - jupyter-nbextension enable nglview --py --sys-prefix
   
