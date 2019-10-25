@@ -93,7 +93,7 @@
   become: yes
   shell: "{{item}}"
   with_items:
-  - conda activate biobb 
+  - conda init bash && bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
   - jupyter-nbextension enable nglview --py --sys-prefix
   - systemctl enable jupyter.service
   - systemctl daemon-reload
