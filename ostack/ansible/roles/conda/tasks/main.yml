@@ -71,22 +71,8 @@
       become: yes
       shell: conda install python=3.6
       
-    #- name: add universe repository for python pip
-    #  become: yes
-    #  apt_repository: 
-    #    repo: deb http://archive.ubuntu.com/ubuntu bionic universe
-    #    state: present
-    
     - name: Install pip 
       become: yes 
       apt:
         name: ['python-pip']
         state: present
-        
-    - name: Activate conda bash
-      become: yes
-      shell: conda init bash && exit
-
-    - name: Kill all ssh connections
-      become: yes
-      ssh-reconnect: all=True
