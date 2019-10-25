@@ -87,14 +87,18 @@
   template:
      src: jupyter.service.j2
      dest: '{{ jupyter_daemon_systemd_filename }}'
-     force: yes     
-
+     force: yes 
+     
+- name: Enable Jupyter daemon
+  become: yes
+  shell: conda init bash && bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb && jupyter-nbextension enable nglview --py --sys-prefix
+  
+  
 - name: Enable Jupyter daemon
   become: yes
   shell: "{{item}}"
   with_items:
   - conda init bash && bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
-  - jupyter-nbextension enable nglview --py --sys-prefix
   - systemctl enable jupyter.service
   - systemctl daemon-reload
   - systemctl restart jupyter.service
