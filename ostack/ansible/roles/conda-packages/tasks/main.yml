@@ -11,14 +11,6 @@
         # - simpletraj
 #- pocl
 
-- name: Activate conda bash
-  become: yes
-  shell: conda init bash
-
-- name: Close and reopen shell
-  become: yes
-  shell: exit
- 
 - name: Install some packages in the environment
   become: yes
   shell: "{{item}}"
