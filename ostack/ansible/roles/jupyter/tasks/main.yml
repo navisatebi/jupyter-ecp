@@ -38,7 +38,7 @@
   pip:
     name: 'jupyter'
     state: '{{ jupyter_package_state }}'
-    executable: '{{ jupyter_package_manager }}'
+    executable: pip3
 
 - name: Generate Jupyter password
   when: jupyter_plaintext_password != ''
