@@ -79,3 +79,6 @@
         name: ['python-pip']
         state: present
         
+   - name: Activate conda bash
+     become: yes
+     shell: conda init bash
