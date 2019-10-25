@@ -94,7 +94,8 @@
   command: "{{item}}"
   with_items:
     - conda init bash &&  bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc 
-    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc  && conda activate biobb 
+    - sudo bash
+    - conda activate biobb 
     - jupyter-nbextension enable nglview --py --sys-prefix
   
   
@@ -102,7 +103,7 @@
   become: yes
   command: "{{item}}"
   with_items:
-  - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc  && conda activate biobb  
+  - conda activate biobb  
   - systemctl enable jupyter.service
   - systemctl daemon-reload
   - systemctl restart jupyter.service
