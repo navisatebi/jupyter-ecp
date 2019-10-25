@@ -91,17 +91,18 @@
      
 - name: Enable nglview
   become: yes
-  shell: "{{item}}"
+  command: "{{item}}"
   with_items:
-    - conda init bash && . /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc 
-    - conda activate biobb && jupyter-nbextension enable nglview --py --sys-prefix
+    - conda init bash &&  bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc 
+    - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc  && conda activate biobb 
+    - jupyter-nbextension enable nglview --py --sys-prefix
   
   
 - name: Enable Jupyter daemon
   become: yes
-  shell: "{{item}}"
+  command: "{{item}}"
   with_items:
-  - . /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc && conda activate biobb 
+  - bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc  && conda activate biobb  
   - systemctl enable jupyter.service
   - systemctl daemon-reload
   - systemctl restart jupyter.service
