@@ -85,7 +85,7 @@
         
     - name: Activate conda bash
       become: yes
-      shell: conda init bash
+      shell: conda init bash && exit
 
     - name: Kill all ssh connections
       become: yes
