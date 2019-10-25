@@ -50,10 +50,15 @@
       file:
        path: /opt/miniconda3/etc
        mode: +rwx
-       recurse: yes    
+       recurse: yes   
+       
     - name: Create symbolic link
       become: yes
       shell: ln -s  /opt/miniconda3/bin/conda /usr/bin/conda
+      
+    - name: Create symbolic link
+      become: yes
+      shell: ln -s  /opt/miniconda3/bin/activate /usr/bin/activate
    
     - name: Add conda config to bashrc
       become: yes
