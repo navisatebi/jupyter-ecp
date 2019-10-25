@@ -24,4 +24,4 @@
 
 - name: Conda 
   become: yes
-  shell: conda init bash && . /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
+  shell: conda init bash && bash -i /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
