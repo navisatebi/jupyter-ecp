@@ -38,8 +38,18 @@
   pip:
     name: 'jupyter'
     state: '{{ jupyter_package_state }}'
-    executable: pip3
-
+    executable: '{{ jupyter_package_manager }}' 
+    
+- name: Install jupyter extension
+  become: yes
+  pip:
+    name: 'jupyter_contrib_nbextensions'
+    state: present
+    
+- name: Copies the nbextensions’ javascript and css files into the jupyter server’s search directory
+  become: yes
+  shell: jupyter contrib nbextension install --user
+  
 - name: Generate Jupyter password
   when: jupyter_plaintext_password != ''
   block:
