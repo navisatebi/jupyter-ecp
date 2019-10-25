@@ -89,7 +89,7 @@
      dest: '{{ jupyter_daemon_systemd_filename }}'
      force: yes 
      
-- name: Enable Jupyter daemon
+- name: Enable nglview
   become: yes
   shell: "{{item}}"
   with_items:
