@@ -58,6 +58,10 @@
     - name: Add conda config to bashrc
       become: yes
       shell: echo ' 127.0.0.1 {{lookup('env','TF_VAR_name')}} ' >> /etc/hosts
+    
+    - name: Add
+      become: yes
+      shell: echo ' echo \"hello\" ' >> /home/{{lookup('env','ANSIBLE_REMOTE_USER')}}/.bashrc
       
     - name: Source .bashrc
       become: yes
